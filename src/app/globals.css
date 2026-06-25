@@ -43,7 +43,7 @@
   --color-brand-navy: #1B2B5E;
   --color-brand-gold: #C9A227;
   --color-brand-light: #F8F9FA;
-  --font-sans: "Heebo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
