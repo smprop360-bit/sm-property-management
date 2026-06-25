@@ -37,7 +37,7 @@ export function SeekerLeadForm({ className }: SeekerLeadFormProps) {
             <Label htmlFor="seeker_property_type">סוג נכס</Label>
             <Select
               value={values.property_type}
-              onValueChange={(v) => handleSelectChange('property_type', v)}
+              onValueChange={(v) => v != null && handleSelectChange('property_type', v)}
             >
               <SelectTrigger id="seeker_property_type" className="w-full h-10">
                 <SelectValue placeholder="בחר סוג נכס" />
