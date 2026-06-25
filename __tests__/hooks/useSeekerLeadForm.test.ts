@@ -54,11 +54,14 @@ describe('useSeekerLeadForm', () => {
     expect(result.current.values.property_type).toBe('office')
   })
 
-  it('clears field error when value is corrected', () => {
+  it('clears field error when value is corrected after failed submit', async () => {
     const { result } = renderHook(() => useSeekerLeadForm())
-    act(() => {
-      result.current.handleChange({ target: { name: 'full_name', value: '' } } as any)
+    // trigger validation errors
+    await act(async () => {
+      await result.current.handleSubmit({ preventDefault: jest.fn() } as any)
     })
+    expect(result.current.errors.full_name).toBe('שם מלא הוא שדה חובה')
+    // correct the value
     act(() => {
       result.current.handleChange({ target: { name: 'full_name', value: 'ישראל' } } as any)
     })
