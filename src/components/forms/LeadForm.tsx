@@ -14,7 +14,7 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
-  const { values, errors, loading, handleChange, handleSubmit } = useLeadForm({
+  const { values, errors, loading, submitError, handleChange, handleSubmit } = useLeadForm({
     leadType,
     propertyId,
   })
@@ -82,6 +82,9 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
         >
           {loading ? 'שולח...' : 'שלח פנייה'}
         </Button>
+        {submitError && (
+          <p className="text-red-500 text-sm text-center">{submitError}</p>
+        )}
       </div>
     </form>
   )

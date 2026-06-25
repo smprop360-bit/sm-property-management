@@ -32,6 +32,7 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState<string | null>(null)
 
   function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
@@ -44,7 +45,11 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
   function validate(): boolean {
     const newErrors: FormErrors = {}
     if (!values.full_name.trim()) newErrors.full_name = 'שם מלא הוא שדה חובה'
-    if (!values.phone.trim()) newErrors.phone = 'טלפון הוא שדה חובה'
+    if (!values.phone.trim()) {
+      newErrors.phone = 'טלפון הוא שדה חובה'
+    } else if (!/^0[2-9]\d{7,8}$/.test(values.phone.replace(/[-\s]/g, ''))) {
+      newErrors.phone = 'מספר טלפון לא תקין'
+    }
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -75,8 +80,12 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
     })
 
     setLoading(false)
-    if (!error) router.push('/thank-you')
+    if (error) {
+      setSubmitError('שגיאה בשליחת הטופס. אנא נסה שוב.')
+    } else {
+      router.push('/thank-you')
+    }
   }
 
-  return { values, errors, loading, handleChange, handleSubmit }
+  return { values, errors, loading, submitError, handleChange, handleSubmit }
 }
