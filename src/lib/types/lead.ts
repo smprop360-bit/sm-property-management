@@ -40,3 +40,16 @@ export interface Lead {
 }
 
 export type LeadInsert = Omit<Lead, 'id' | 'created_at' | 'updated_at'>
+
+export const LEAD_STATUS_COLORS: Record<LeadStatus, string> = {
+  'חדש':          'bg-blue-100 text-blue-700',
+  'בטיפול':       'bg-yellow-100 text-yellow-700',
+  'לא ענה':       'bg-orange-100 text-orange-700',
+  'חזרתי אליו':   'bg-purple-100 text-purple-700',
+  'רלוונטי':      'bg-green-100 text-green-700',
+  'לא רלוונטי':   'bg-gray-100 text-gray-500',
+  'נקבעה פגישה':  'bg-teal-100 text-teal-700',
+  'נשלחה הצעה':   'bg-indigo-100 text-indigo-700',
+  'נסגרה עסקה':   'bg-brand-navy/10 text-brand-navy',
+  'במעקב':        'bg-amber-100 text-amber-700',
+}
