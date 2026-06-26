@@ -14,6 +14,8 @@ export default function EditPropertyPage() {
   const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
+    setProperty(null)
+    setNotFound(false)
     createClient()
       .from('properties')
       .select('*')
