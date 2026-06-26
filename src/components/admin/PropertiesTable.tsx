@@ -132,7 +132,7 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
         open={confirmId !== null}
         onOpenChange={(o: boolean) => { if (!o) setConfirmId(null) }}
       >
-        <DialogContent>
+        <DialogContent showCloseButton={false}>
           <div className="flex items-start gap-3">
             <AlertTriangle className="text-red-500 shrink-0 mt-0.5" size={20} />
             <div>
