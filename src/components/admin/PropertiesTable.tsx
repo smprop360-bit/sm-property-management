@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Pencil, Trash2, AlertTriangle } from 'lucide-react'
+import { Pencil, Trash2, AlertTriangle, Link2, Check } from 'lucide-react'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import type { Property } from '@/lib/types/property'
 import { PROPERTY_TYPE_LABELS, DEAL_TYPE_LABELS } from '@/lib/types/property'
@@ -30,6 +30,13 @@ const PROPERTY_STATUS_COLORS: Record<string, string> = {
 
 export function PropertiesTable({ properties, loading, onDelete }: PropertiesTableProps) {
   const [confirmId, setConfirmId] = useState<string | null>(null)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
+
+  function copyLink(slug: string, id: string) {
+    navigator.clipboard.writeText(`https://${slug}.toprop.co.il`)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 2000)
+  }
 
   if (loading) {
     return (
@@ -104,6 +111,19 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => copyLink(prop.slug, prop.id)}
+                          className="p-1.5 rounded hover:bg-gray-100 text-gray-500 hover:text-brand-gold"
+                          aria-label="העתק קישור"
+                          title={`https://${prop.slug}.toprop.co.il`}
+                        >
+                          {copiedId === prop.id ? (
+                            <Check size={16} className="text-green-500" />
+                          ) : (
+                            <Link2 size={16} />
+                          )}
+                        </button>
                         <Link
                           href={`/admin/properties/${prop.id}/edit`}
                           className="p-1.5 rounded hover:bg-gray-100 text-gray-500 hover:text-brand-navy"
@@ -112,6 +132,7 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
                           <Pencil size={16} />
                         </Link>
                         <button
+                          type="button"
                           onClick={() => setConfirmId(prop.id)}
                           className="p-1.5 rounded hover:bg-red-50 text-gray-500 hover:text-red-600"
                           aria-label="מחיקה"
