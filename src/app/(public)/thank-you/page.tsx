@@ -20,7 +20,7 @@ export default function ThankYouPage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="https://wa.me/972500000000"
+            href="https://wa.me/972552601077"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] text-white font-semibold px-8 py-4 text-base transition-colors hover:bg-[#20bd5b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/50"

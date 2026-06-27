@@ -32,14 +32,14 @@ export function PublicFooter() {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://wa.me/972500000000"
+              href="https://wa.me/972552601077"
               className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm transition-colors"
             >
               <MessageCircle size={16} />
               WhatsApp
             </a>
             <a
-              href="tel:+972500000000"
+              href="tel:+972552601077"
               className="flex items-center gap-2 border border-white/20 hover:border-brand-gold text-white px-4 py-2 rounded-lg text-sm transition-colors"
             >
               <Phone size={16} />
