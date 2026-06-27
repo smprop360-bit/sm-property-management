@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Lock } from 'lucide-react'
 import { buttonVariants } from '@/components/ui/button'
 
 const navLinks = [
@@ -43,6 +43,14 @@ export function PublicHeader() {
               className={buttonVariants({ className: 'hidden md:flex bg-brand-gold hover:bg-brand-gold/90 text-white' })}
             >
               פרסם נכס
+            </Link>
+            <Link
+              href="/admin"
+              className="p-2 text-gray-400 hover:text-brand-navy transition-colors"
+              aria-label="כניסה לניהול"
+              title="כניסה לניהול"
+            >
+              <Lock size={18} />
             </Link>
             <button
               className="md:hidden p-2 text-gray-600"
