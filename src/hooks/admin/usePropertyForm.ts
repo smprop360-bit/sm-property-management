@@ -49,6 +49,7 @@ function generateSlug(title: string): string {
       .replace(/\s+/g, '-')
       .replace(/[^a-z0-9-]/g, '')
       .replace(/--+/g, '-')
+      .replace(/^-+|-+$/g, '')
       .slice(0, 40) || 'property'
   return `${base}-${Date.now().toString(36)}`
 }
