@@ -1,55 +1,36 @@
-import Link from 'next/link'
-import { CheckCircle, MessageCircle, ArrowRight } from 'lucide-react'
+import Link from 'next/link';
+import { CheckCircle2 } from 'lucide-react';
+
+export const metadata = {
+  title: 'תודה! | TOPROP',
+  description: 'קיבלנו את הפרטים שלך ונחזור אליך בקרוב.',
+};
 
 export default function ThankYouPage() {
   return (
-    <div className="min-h-[85vh] flex items-center justify-center px-4 py-20 bg-brand-light">
-      <div className="max-w-md mx-auto text-center">
-        {/* Icon */}
-        <div className="w-20 h-20 rounded-2xl bg-white shadow-md border border-gray-100 flex items-center justify-center mx-auto mb-8">
-          <CheckCircle className="w-10 h-10 text-brand-gold" />
-        </div>
-
-        {/* Overline */}
-        <div className="flex items-center justify-center gap-3 mb-5">
-          <div className="h-px w-10 bg-brand-gold/40" />
-          <p className="text-brand-gold text-[11px] font-semibold uppercase tracking-[0.3em]">
-            תודה
-          </p>
-          <div className="h-px w-10 bg-brand-gold/40" />
-        </div>
-
-        <h1
-          className="text-3xl md:text-4xl font-black text-brand-navy mb-4"
-          style={{ fontFamily: 'var(--font-heading)' }}
-        >
-          קיבלנו את פנייתך!
-        </h1>
-        <p className="text-gray-500 text-base leading-relaxed mb-10">
-          אחד מהנציגים שלנו יחזור אליך בהקדם האפשרי.
-          <br />
-          בינתיים, אפשר לדבר איתנו ישירות בווצאפ.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+    <div className="min-h-screen bg-surface flex items-center justify-center px-4">
+      <div className="max-w-md w-full text-center bg-white rounded-3xl shadow-sm border border-gray-100 p-10">
+        <CheckCircle2 size={56} className="text-gold mx-auto mb-6" />
+        <h1 className="font-heading text-3xl font-bold text-navy mb-3">תודה!</h1>
+        <p className="text-brand-muted text-lg mb-2">קיבלנו את הפרטים שלכם.</p>
+        <p className="text-brand-muted mb-8">נחזור אליכם תוך יום עסקים אחד לתיאום שיחה.</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="https://wa.me/972552601077"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#25D366] text-white font-semibold px-8 py-3.5 text-sm transition-all duration-200 hover:bg-[#20bd5b] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]/50"
+            className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
           >
-            <MessageCircle className="w-4 h-4" />
-            דבר איתנו בווצאפ
+            המשיכו ב-WhatsApp
           </a>
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-brand-navy/20 text-brand-navy font-semibold px-8 py-3.5 text-sm transition-all duration-200 hover:bg-brand-navy hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy/30"
+            className="border border-gray-200 text-brand-muted hover:border-navy hover:text-navy font-semibold px-6 py-3 rounded-xl transition-colors"
           >
-            <ArrowRight className="w-4 h-4" />
-            חזרה לעמוד הבית
+            חזרה לאתר
           </Link>
         </div>
       </div>
     </div>
-  )
+  );
 }
