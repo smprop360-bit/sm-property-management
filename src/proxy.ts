@@ -21,10 +21,8 @@ export function proxy(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Rewrite subdomain to /property/[slug]
-  const url = request.nextUrl.clone()
-  url.pathname = `/property/${subdomain}`
-  return NextResponse.rewrite(url)
+  // Subdomain routing disabled - property pages removed
+  return NextResponse.next()
 }
 
 export const config = {

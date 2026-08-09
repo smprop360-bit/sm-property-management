@@ -224,10 +224,10 @@ body { font-family: 'Heebo', sans-serif; }
 
 ```bash
 # .env.local
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-SUPABASE_SERVICE_ROLE_KEY=
-<REDACTED_SECRET>
+NEXT_PUBLIC_SUPABASE_URL=https://luwpyyxxzdifeoxcufsw.supabase.co/rest/v1/
+NEXT_PUBLIC_SUPABASE_ANON_KEY=<REDACTED_JWT>
+SUPABASE_SERVICE_ROLE_KEY=<REDACTED_SECRET>
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
 ---

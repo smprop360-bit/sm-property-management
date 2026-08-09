@@ -1,0 +1,635 @@
+{
+  "project": {
+    "name": "TOPROP Website",
+    "domain": "https://toprop.co.il",
+    "brand_name": "TOPROP",
+    "primary_language": "he",
+    "secondary_language": "en",
+    "rtl_default": true,
+    "purpose": "Lead-generating website for property management, rentals and investment services for private and commercial property owners.",
+    "brand_positioning": "Property management company with investor mindset: manage the property, improve income, reduce risk, and give owners transparent control.",
+    "tagline_he": "מנהלים את הנכס. ממקסמים את ההשקעה.",
+    "tagline_en": "Managing Property. Maximizing Investment.",
+    "brand_line_he": "ניהול נכסים • השכרה • השקעות",
+    "brand_line_en": "PROPERTY MANAGEMENT • RENTALS • INVESTMENTS"
+  },
+  "working_method": {
+    "environment": [
+      "VS Code",
+      "Claude Code"
+    ],
+    "strategy": "AUDIT_FIRST_THEN_REFACTOR",
+    "do_not_rebuild_blindly": true,
+    "rules": [
+      "First inspect the existing project before deleting or replacing anything.",
+      "Keep existing code/assets only if they are useful, maintainable, accessible, responsive, SEO-friendly, and consistent with the new TOPROP positioning.",
+      "Delete obsolete, duplicated, broken, off-brand, placeholder or unused pages/components/assets.",
+      "If the existing architecture is fundamentally weak, create a clean v2 structure and migrate only validated assets/content.",
+      "Never change the TOPROP logo artwork unless explicitly requested.",
+      "Treat PROJECT.md as the living source of truth and update it after every meaningful implementation phase.",
+      "Read and use any local Claude/VS Code skills that exist in the repository before implementing UI or architecture.",
+      "Do not invent business claims, customer counts, years of experience, managed asset value, reviews or case-study numbers.",
+      "Use real content only; use clearly labeled demo/placeholder data in mockups."
+    ]
+  },
+  "phase_0_audit": {
+    "goal": "Understand the current codebase and decide what to keep, refactor, remove or rebuild.",
+    "required_outputs": [
+      "AUDIT.md",
+      "KEEP_REMOVE_REFACTOR.md",
+      "Updated PROJECT.md",
+      "Implementation plan with ordered tasks"
+    ],
+    "checks": [
+      "framework and version",
+      "package manager",
+      "routing structure",
+      "components",
+      "styles and design system",
+      "responsive behavior",
+      "RTL behavior",
+      "SEO metadata",
+      "forms",
+      "analytics",
+      "accessibility",
+      "performance",
+      "security basics",
+      "unused dependencies",
+      "dead code",
+      "duplicate assets",
+      "broken links",
+      "content quality",
+      "existing skills/configuration in .claude or repository"
+    ],
+    "decision_matrix": {
+      "keep": "Good quality, reusable, aligned with new site.",
+      "refactor": "Useful but technically/design-wise below target.",
+      "remove": "Outdated, duplicated, off-brand or unused.",
+      "rebuild": "Core architecture or page is too weak to safely evolve."
+    }
+  },
+  "technical_stack": {
+    "preferred": {
+      "framework": "Next.js 15+ App Router",
+      "language": "TypeScript strict",
+      "styling": "Tailwind CSS",
+      "ui": "Reusable component system, accessible primitives",
+      "backend": "Supabase when backend features are required",
+      "database": "PostgreSQL via Supabase",
+      "auth": "Supabase Auth for admin/owner portal when introduced",
+      "storage": "Supabase Storage for future documents/media where appropriate",
+      "hosting": "Vercel",
+      "forms": "Server Actions or API route with validation",
+      "validation": "Zod",
+      "analytics": [
+        "Google Analytics 4",
+        "Google Search Console",
+        "Meta Pixel when campaigns start"
+      ],
+      "email": "Provider abstraction; do not hard-code vendor-specific logic",
+      "whatsapp": "CTA links initially; API integration later"
+    },
+    "principles": [
+      "Mobile-first",
+      "Hebrew-first RTL",
+      "English-ready",
+      "Fast loading",
+      "SEO-first",
+      "Accessible",
+      "Secure by default",
+      "No unnecessary dependencies",
+      "No premature microservices",
+      "No over-engineering"
+    ]
+  },
+  "design_system": {
+    "source": "Use the uploaded TOPROP logo and derive the visual language from it.",
+    "style": "Premium corporate real estate + modern fintech dashboard feel.",
+    "colors": {
+      "navy": "#08274F",
+      "navy_dark": "#051A34",
+      "gold": "#C8902E",
+      "gold_soft": "#D9AE55",
+      "white": "#FFFFFF",
+      "surface": "#F7F8FA",
+      "text": "#0B1F36",
+      "muted": "#687386"
+    },
+    "rules": [
+      "White should dominate large content areas.",
+      "Use navy for authority and structure.",
+      "Use gold for CTAs, highlights and premium details.",
+      "Avoid excessive metallic effects or visual noise.",
+      "Use generous whitespace.",
+      "Use real estate imagery sparingly and intentionally.",
+      "Avoid generic handshake stock photos.",
+      "Dashboards and data visualizations may be used to reinforce transparency and control."
+    ]
+  },
+  "information_architecture": {
+    "header": [
+      "ראשי",
+      "ניהול נכסים",
+      "השכרה",
+      "Airbnb",
+      "מסחרי",
+      "למשקיעים",
+      "איך זה עובד",
+      "אודות",
+      "צור קשר"
+    ],
+    "primary_cta": "בדיקת הנכס שלי",
+    "secondary_cta": "דברו איתנו",
+    "account_cta": "כניסת בעלי נכסים",
+    "pages": [
+      {
+        "slug": "/",
+        "name": "Home",
+        "goal": "Explain the value proposition quickly and generate qualified property-owner leads."
+      },
+      {
+        "slug": "/property-management",
+        "name": "ניהול נכסים",
+        "goal": "Convert long-term residential property owners."
+      },
+      {
+        "slug": "/commercial-property-management",
+        "name": "ניהול נכסים מסחריים",
+        "goal": "Convert office, retail, warehouse and income-property owners."
+      },
+      {
+        "slug": "/airbnb-management",
+        "name": "Airbnb / Short Term",
+        "goal": "Offer feasibility-first short-term rental management."
+      },
+      {
+        "slug": "/investors",
+        "name": "למשקיעים",
+        "goal": "Present Property 360, improvement, partnership and portfolio management."
+      },
+      {
+        "slug": "/property-360",
+        "name": "Property 360",
+        "goal": "Main lead magnet and qualification wizard."
+      },
+      {
+        "slug": "/pricing",
+        "name": "מחירון וחבילות",
+        "goal": "Create pricing transparency without overcommitting."
+      },
+      {
+        "slug": "/how-it-works",
+        "name": "איך זה עובד",
+        "goal": "Reduce friction and explain onboarding."
+      },
+      {
+        "slug": "/about",
+        "name": "אודות",
+        "goal": "Build trust around expertise, service, technology and investor mindset."
+      },
+      {
+        "slug": "/blog",
+        "name": "מאמרים",
+        "goal": "SEO and education."
+      },
+      {
+        "slug": "/contact",
+        "name": "צור קשר",
+        "goal": "Convert users who prefer direct contact."
+      },
+      {
+        "slug": "/en",
+        "name": "English Home",
+        "goal": "Serve overseas owners and English-speaking investors."
+      }
+    ]
+  },
+  "homepage": {
+    "sections": [
+      {
+        "id": "hero",
+        "headline": "הנכס שלך צריך לעבוד בשבילך.",
+        "body": "TOPROP מנהלת, משכירה ומשביחה נכסים פרטיים ומסחריים, עם שירות מלא לבעלי נכסים ומשקיעים – משלב בחירת אסטרטגיית ההשכרה ועד לניהול השוטף.",
+        "primary_cta": "בדיקת הנכס שלי",
+        "secondary_cta": "דברו איתנו",
+        "support_line": "ניהול לטווח ארוך • Airbnb • מסחרי • השבחה • שותפויות"
+      },
+      {
+        "id": "services",
+        "headline": "איך הנכס שלך צריך לעבוד?",
+        "cards": [
+          "ניהול לטווח ארוך",
+          "Airbnb / Short Term",
+          "נכסים מסחריים",
+          "השבחה",
+          "שותפויות והשקעות"
+        ]
+      },
+      {
+        "id": "property_360",
+        "headline": "TOPROP Property 360",
+        "subheadline": "לא בטוחים מה הדרך הנכונה להשכיר או להפעיל את הנכס?",
+        "points": [
+          "השוואת שכירות ארוכת טווח מול Short-Term",
+          "בדיקת פוטנציאל השבחה",
+          "בדיקת התאמה לניהול מלא",
+          "בדיקת התאמה לשותפות",
+          "המלצה על מסלול פעולה"
+        ],
+        "cta": "קבלו בדיקת Property 360"
+      },
+      {
+        "id": "why_toprop",
+        "headline": "לא רק מנהלים את הנכס. מנהלים את ההשקעה.",
+        "items": [
+          "שקיפות מלאה",
+          "חשיבה כלכלית",
+          "כתובת אחת",
+          "ניהול מקצועי",
+          "טכנולוגיה ודיווח"
+        ]
+      },
+      {
+        "id": "owner_portal_preview",
+        "headline": "בעל הנכס רואה הכול.",
+        "message": "גם כשאנחנו מנהלים – אתם תמיד בשליטה.",
+        "demo_kpis": [
+          "מספר נכסים",
+          "הכנסה חודשית",
+          "תפוסה",
+          "תקלות פתוחות",
+          "חוזים לחידוש"
+        ]
+      },
+      {
+        "id": "how_it_works",
+        "headline": "איך זה עובד?",
+        "steps": [
+          "מספרים לנו על הנכס",
+          "מבצעים Property Review",
+          "בוחרים מסלול",
+          "קולטים את הנכס למערכת",
+          "TOPROP מנהלת",
+          "מקבלים דוחות ושקיפות"
+        ]
+      },
+      {
+        "id": "overseas",
+        "headline": "הנכס בישראל. אתם יכולים להיות בכל מקום בעולם.",
+        "body": "ניהול מקומי לבעלי נכסים שאינם נמצאים בישראל – שוכרים, ספקים, חוזים, ביקורים ודוחות.",
+        "cta": "ניהול נכס מרחוק"
+      },
+      {
+        "id": "commercial",
+        "headline": "נכס מסחרי צריך מנהל שחושב עסקית.",
+        "cta": "ניהול נכס מסחרי"
+      },
+      {
+        "id": "airbnb",
+        "headline": "Airbnb או שכירות רגילה? קודם בודקים מה באמת משתלם.",
+        "cta": "בדיקת כדאיות Airbnb"
+      },
+      {
+        "id": "final_cta",
+        "headline": "רוצים לדעת מה הנכס שלכם יכול לעשות יותר טוב?",
+        "primary_cta": "בדיקת הנכס שלי",
+        "secondary_cta": "דברו איתנו"
+      }
+    ]
+  },
+  "property_360_wizard": {
+    "goal": "Generate high-quality owner leads and collect enough information for a meaningful first review.",
+    "steps": [
+      {
+        "step": 1,
+        "title": "איזה נכס יש לך?",
+        "fields": [
+          "דירה",
+          "בית",
+          "משרד",
+          "חנות",
+          "מחסן",
+          "נכס מסחרי אחר"
+        ]
+      },
+      {
+        "step": 2,
+        "title": "איפה הנכס?",
+        "fields": [
+          "city",
+          "address"
+        ]
+      },
+      {
+        "step": 3,
+        "title": "פרטי הנכס",
+        "fields": [
+          "area_sqm",
+          "rooms",
+          "floor",
+          "parking",
+          "elevator",
+          "balcony"
+        ]
+      },
+      {
+        "step": 4,
+        "title": "מצב הנכס",
+        "fields": [
+          "rented",
+          "vacant",
+          "tenant_leaving",
+          "renovation"
+        ]
+      },
+      {
+        "step": 5,
+        "title": "הכנסה נוכחית",
+        "fields": [
+          "current_monthly_rent",
+          "asking_rent_optional"
+        ]
+      },
+      {
+        "step": 6,
+        "title": "מה מעניין אותך?",
+        "fields": [
+          "management",
+          "long_term_rental",
+          "airbnb",
+          "improvement",
+          "partnership",
+          "not_sure"
+        ]
+      },
+      {
+        "step": 7,
+        "title": "פרטי קשר",
+        "fields": [
+          "full_name",
+          "phone",
+          "email",
+          "consent"
+        ]
+      }
+    ],
+    "after_submit": [
+      "Create lead in database/CRM.",
+      "Store source/UTM.",
+      "Send internal notification.",
+      "Show thank-you page.",
+      "Optionally offer WhatsApp continuation.",
+      "Do not promise automatic valuation unless a real valuation engine exists."
+    ]
+  },
+  "lead_management": {
+    "statuses": [
+      "NEW",
+      "CONTACTED",
+      "QUALIFIED",
+      "PROPERTY_REVIEW",
+      "MEETING",
+      "PROPOSAL",
+      "NEGOTIATION",
+      "WON",
+      "LOST"
+    ],
+    "lead_fields": [
+      "id",
+      "created_at",
+      "full_name",
+      "phone",
+      "email",
+      "source",
+      "utm_source",
+      "utm_campaign",
+      "utm_content",
+      "property_type",
+      "city",
+      "address",
+      "area_sqm",
+      "current_rent",
+      "interest",
+      "status",
+      "notes",
+      "assigned_to"
+    ]
+  },
+  "pricing_page": {
+    "principles": [
+      "Show starting prices or ranges only where approved.",
+      "Clearly state minimum monthly fee and that complexity/property type can affect pricing.",
+      "Separate management fees from brokerage, project management, cleaning, repairs and external vendor costs.",
+      "Do not publish guaranteed-rent promises as a standard product."
+    ],
+    "packages": [
+      {
+        "name": "CORE",
+        "positioning": "ניהול שוטף",
+        "price_display": "החל מ-6%–7%, בכפוף למינימום חודשי"
+      },
+      {
+        "name": "PREMIUM",
+        "positioning": "ניהול מלא ודיווח מתקדם",
+        "price_display": "החל מ-8%–9%, בכפוף למינימום חודשי"
+      },
+      {
+        "name": "PRIVATE",
+        "positioning": "ניהול פורטפוליו",
+        "price_display": "הצעה מותאמת"
+      }
+    ]
+  },
+  "seo": {
+    "primary_topics": [
+      "ניהול נכסים",
+      "ניהול דירות להשכרה",
+      "ניהול נכסים מסחריים",
+      "ניהול Airbnb",
+      "ניהול נכסים למשקיעים",
+      "ניהול נכס לתושב חוץ"
+    ],
+    "technical": [
+      "Unique title and meta description per page",
+      "One H1 per page",
+      "Canonical URLs",
+      "OpenGraph",
+      "robots.txt",
+      "sitemap.xml",
+      "Organization schema",
+      "Service schema",
+      "FAQ schema where appropriate",
+      "Article schema for blog",
+      "Semantic HTML",
+      "Image alt text"
+    ],
+    "content_rules": [
+      "Write for owners, not for search engines.",
+      "No thin city pages.",
+      "No duplicate SEO pages.",
+      "Publish local pages only when unique local content exists."
+    ]
+  },
+  "analytics": {
+    "events": [
+      "property360_start",
+      "property360_complete",
+      "contact_submit",
+      "phone_click",
+      "whatsapp_click",
+      "pricing_view",
+      "commercial_lead",
+      "airbnb_lead",
+      "investor_lead",
+      "book_meeting"
+    ],
+    "requirements": [
+      "Preserve UTM parameters.",
+      "Track conversion source to lead record.",
+      "Do not load marketing trackers before consent if legally required."
+    ]
+  },
+  "accessibility_and_quality": {
+    "targets": {
+      "mobile": "First-class",
+      "rtl": "Native, not patched",
+      "lighthouse_performance": "90+ target",
+      "lighthouse_accessibility": "90+ target",
+      "lighthouse_seo": "95+ target"
+    },
+    "requirements": [
+      "Keyboard navigation",
+      "Visible focus",
+      "Proper form labels",
+      "Contrast checks",
+      "Responsive typography",
+      "Reduced motion support",
+      "Accessible dialogs",
+      "Accessible error messages"
+    ]
+  },
+  "security": {
+    "requirements": [
+      "No secrets in repository.",
+      "Use environment variables.",
+      "Server-side validation for forms.",
+      "Rate limiting / spam protection.",
+      "Input sanitization where needed.",
+      "MFA for admin when admin auth exists.",
+      "Least-privilege database policies.",
+      "Supabase RLS when database/auth is introduced.",
+      "Do not expose owner/tenant data publicly."
+    ]
+  },
+  "admin_mvp": {
+    "include": [
+      "Lead list",
+      "Lead details",
+      "Lead status updates",
+      "Notes",
+      "Source/UTM",
+      "Property 360 submissions",
+      "Basic content settings if easy to maintain"
+    ],
+    "exclude_initially": [
+      "Full owner portal",
+      "Tenant portal",
+      "Vendor portal",
+      "Complex accounting",
+      "Airbnb channel manager",
+      "Guaranteed-rent financial engine"
+    ]
+  },
+  "future_ready_modules": [
+    "Owner Portal",
+    "Properties",
+    "Tenants",
+    "Leases",
+    "Payments",
+    "Maintenance Tickets",
+    "Vendors",
+    "Documents",
+    "Approvals",
+    "Reports",
+    "Airbnb Operations",
+    "Partnership Analysis",
+    "Property 360 scoring",
+    "Portfolio Management"
+  ],
+  "repository_documentation": {
+    "required_files": {
+      "PROJECT.md": "Living project definition, current architecture, scope, decisions, routes, data model, env vars and current status.",
+      "AUDIT.md": "Existing-site audit produced before refactor.",
+      "KEEP_REMOVE_REFACTOR.md": "Explicit list of what remains, changes, or is deleted.",
+      "CHANGELOG.md": "Meaningful implementation changes.",
+      "TASKS.md": "Ordered implementation tasks with status.",
+      "DECISIONS.md": "Architecture and product decisions with rationale."
+    },
+    "project_md_update_rule": "After every completed phase, update current state, completed items, next steps, decisions and known issues."
+  },
+  "implementation_phases": [
+    {
+      "phase": 0,
+      "name": "Audit current project",
+      "deliverable": "No destructive changes until audit is complete."
+    },
+    {
+      "phase": 1,
+      "name": "Foundation",
+      "deliverable": "Clean repo, design tokens, layout, RTL, header/footer, metadata."
+    },
+    {
+      "phase": 2,
+      "name": "Homepage",
+      "deliverable": "Production-quality conversion-focused home page."
+    },
+    {
+      "phase": 3,
+      "name": "Property 360",
+      "deliverable": "Wizard + lead persistence + thank-you flow."
+    },
+    {
+      "phase": 4,
+      "name": "Service pages",
+      "deliverable": "Management, commercial, Airbnb, investors, pricing, process."
+    },
+    {
+      "phase": 5,
+      "name": "Lead admin",
+      "deliverable": "Basic protected admin/CRM view."
+    },
+    {
+      "phase": 6,
+      "name": "SEO + analytics + QA",
+      "deliverable": "Tracking, metadata, performance, accessibility, testing."
+    },
+    {
+      "phase": 7,
+      "name": "English",
+      "deliverable": "High-quality English route and overseas-owner landing page."
+    },
+    {
+      "phase": 8,
+      "name": "Owner Portal",
+      "deliverable": "Separate project phase after lead-generation website is stable."
+    }
+  ],
+  "definition_of_done": [
+    "Existing project was audited before rebuild decisions.",
+    "Unused code/assets removed.",
+    "Homepage communicates TOPROP value in under 5 seconds.",
+    "Property 360 works end-to-end.",
+    "All forms validate and persist leads reliably.",
+    "Hebrew RTL is correct on desktop and mobile.",
+    "English architecture is supported.",
+    "No fabricated claims or metrics.",
+    "SEO basics are complete.",
+    "Analytics conversion events are implemented.",
+    "Accessibility and performance targets are checked.",
+    "PROJECT.md and other documentation reflect the actual codebase.",
+    "npm run build passes with no blocking errors."
+  ],
+  "claude_code_execution_prompt": {
+    "instruction": "Act as senior product engineer, UX architect and conversion-focused web developer. Start by auditing the current repository. Do not delete or rebuild blindly. Read all repository instructions and installed skills first. Produce AUDIT.md and KEEP_REMOVE_REFACTOR.md, then update PROJECT.md. Only after the audit, implement the TOPROP website in ordered phases using this JSON as the product source of truth. Keep each phase buildable, testable and documented. Before finishing each phase, run type checks/build/tests available in the project and update PROJECT.md, TASKS.md and CHANGELOG.md."
+  }
+}

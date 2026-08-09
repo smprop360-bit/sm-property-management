@@ -44,6 +44,7 @@
   --color-brand-gold: #C9A227;
   --color-brand-light: #F8F9FA;
   --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-frank), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
@@ -136,5 +137,6 @@ body {
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }
