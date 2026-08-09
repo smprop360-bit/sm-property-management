@@ -40,9 +40,17 @@
 }
 
 @theme {
-  --color-brand-navy: #1B2B5E;
-  --color-brand-gold: #C9A227;
-  --color-brand-light: #F8F9FA;
+  --color-navy: #08274F;
+  --color-navy-dark: #051A34;
+  --color-gold: #C8902E;
+  --color-gold-soft: #D9AE55;
+  --color-surface: #F7F8FA;
+  --color-brand-text: #0B1F36;
+  --color-brand-muted: #687386;
+  /* backward compat */
+  --color-brand-navy: #08274F;
+  --color-brand-gold: #C8902E;
+  --color-brand-light: #F7F8FA;
   --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-frank), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
 }

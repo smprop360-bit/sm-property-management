@@ -17,8 +17,17 @@ const frank = Frank_Ruhl_Libre({
 })
 
 export const metadata: Metadata = {
-  title: 'TOPROP | המאגר הישראלי לנכסים',
-  description: 'נכסים מסחריים למכירה ולהשכרה בישראל — משרדים, חנויות, מחסנים ועוד.',
+  title: {
+    default: 'TOPROP | ניהול נכסים, השכרה והשקעות',
+    template: '%s | TOPROP',
+  },
+  description: 'TOPROP מנהלת, משכירה ומשביחה נכסים פרטיים ומסחריים. שירות מלא לבעלי נכסים ומשקיעים.',
+  metadataBase: new URL('https://toprop.co.il'),
+  openGraph: {
+    siteName: 'TOPROP',
+    locale: 'he_IL',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
