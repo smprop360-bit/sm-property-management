@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   Key, Bot, Sparkles, Copy, CheckCircle, Save,
   AlertTriangle, ChevronDown, ExternalLink, Loader2, RefreshCw,
@@ -20,10 +20,10 @@ const LS_MODEL = 'toprop_openai_model'
 
 export default function AdminSettingsPage() {
   /* ── AI settings ── */
-  const [apiKey, setApiKey]           = useState('')
-  const [model,  setModel]            = useState('gpt-4o-mini')
+  const [apiKey, setApiKey]           = useState(() => typeof window !== 'undefined' ? (localStorage.getItem(LS_KEY) ?? '') : '')
+  const [model,  setModel]            = useState(() => typeof window !== 'undefined' ? (localStorage.getItem(LS_MODEL) ?? 'gpt-4o-mini') : 'gpt-4o-mini')
   const [saved,  setSaved]            = useState(false)
-  const [loadingSettings, setLoadingSettings] = useState(true)
+  const loadingSettings = false
 
   /* ── Connection test ── */
   type ConnStatus = 'unknown' | 'testing' | 'ok' | 'error'
@@ -43,13 +43,6 @@ export default function AdminSettingsPage() {
   const [savedSlug,  setSavedSlug]  = useState<string | null>(null)
 
   const supabase = createClient()
-
-  /* Load from localStorage on mount */
-  useEffect(() => {
-    setApiKey(localStorage.getItem(LS_KEY)  ?? '')
-    setModel(localStorage.getItem(LS_MODEL) ?? 'gpt-4o-mini')
-    setLoadingSettings(false)
-  }, [])
 
   function saveSettings() {
     localStorage.setItem(LS_KEY,   apiKey)

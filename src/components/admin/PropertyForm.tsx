@@ -134,7 +134,7 @@ export function PropertyForm({
           <h2 className="text-base font-semibold text-brand-navy border-b pb-3">מפרט</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-1.5">
-              <Label htmlFor="size_sqm">גודל (מ"ר)</Label>
+              <Label htmlFor="size_sqm">גודל (מ&quot;ר)</Label>
               <Input id="size_sqm" name="size_sqm" type="number" min="0" value={values.size_sqm} onChange={onChange} placeholder="120" />
             </div>
             <div className="space-y-1.5">

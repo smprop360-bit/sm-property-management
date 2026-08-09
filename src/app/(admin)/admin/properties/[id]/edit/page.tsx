@@ -14,20 +14,21 @@ export default function EditPropertyPage() {
   const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
-    setProperty(null)
-    setNotFound(false)
+    let cancelled = false
     createClient()
       .from('properties')
       .select('*')
       .eq('id', id)
       .single()
       .then(({ data, error }) => {
+        if (cancelled) return
         if (error || !data) {
           setNotFound(true)
         } else {
           setProperty(data)
         }
       })
+    return () => { cancelled = true }
   }, [id])
 
   if (notFound) {

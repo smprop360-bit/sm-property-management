@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Test files and jest config are checked by jest's own TS handling
+    "__tests__/**",
+    "jest.config.js",
   ]),
 ]);
 
