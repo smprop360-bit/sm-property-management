@@ -18,7 +18,7 @@ const trustPoints = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden gradient-navy noise-overlay min-h-[90vh] flex items-center">
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center" style={{ background: 'linear-gradient(135deg, #08274F 0%, #051A34 60%, #0a1f3d 100%)' }}>
       {/* Geometric decorations */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Large circle top-left */}
@@ -64,7 +64,7 @@ export default function HeroSection() {
               className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
             >
               הנכס שלך{' '}
-              <span className="text-gradient-gold">צריך לעבוד</span>
+              <span style={{ background: 'linear-gradient(135deg, #C8902E, #D9AE55, #C8902E)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>צריך לעבוד</span>
               {' '}בשבילך.
             </motion.h1>
 
@@ -109,7 +109,7 @@ export default function HeroSection() {
             >
               <Link
                 href="/property-360"
-                className="group inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-soft text-white font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300 gold-glow"
+                className="group inline-flex items-center justify-center gap-3 bg-gold hover:bg-gold-soft text-white font-semibold text-lg px-8 py-4 rounded-2xl transition-all duration-300"
               >
                 בדיקת הנכס שלי
                 <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
