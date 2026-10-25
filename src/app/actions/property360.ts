@@ -26,6 +26,26 @@ export type Property360Data = {
 };
 
 export async function submitProperty360(data: Property360Data) {
+  const fullName = data.full_name.trim();
+  const phone = data.phone.replace(/[\s-]/g, '');
+  const email = data.email.trim();
+
+  if (!fullName) {
+    throw new Error('יש להזין שם מלא.');
+  }
+
+  if (!/^0[2-9]\d{7,8}$/.test(phone)) {
+    throw new Error('יש להזין מספר טלפון תקין.');
+  }
+
+  if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+    throw new Error('יש להזין כתובת אימייל תקינה.');
+  }
+
+  if (!data.consent) {
+    throw new Error('נדרשת הסכמה ליצירת קשר כדי לשלוח את הבדיקה.');
+  }
+
   const supabase = await createClient();
 
   // Build a summary message from wizard fields that have no dedicated column
@@ -41,9 +61,9 @@ export async function submitProperty360(data: Property360Data) {
   if (data.interests.length) details.push(`תחומי עניין: ${data.interests.join(', ')}`);
 
   const { error } = await supabase.from('leads').insert({
-    full_name: data.full_name,
-    phone: data.phone,
-    email: data.email || null,
+    full_name: fullName,
+    phone,
+    email: email || null,
     lead_type: 'owner' as const,
     source: 'property360',
     utm_source: data.utm_source ?? null,

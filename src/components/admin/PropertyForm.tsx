@@ -2,6 +2,7 @@
 
 import type { ChangeEvent, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { Upload, X } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -195,7 +196,7 @@ export function PropertyForm({
             <div className="flex flex-wrap gap-3">
               {existingImages.map(url => (
                 <div key={url} className="relative">
-                  <img src={url} alt="" className="w-20 h-20 rounded-lg object-cover" />
+                  <Image src={url} alt="" width={80} height={80} unoptimized className="w-20 h-20 rounded-lg object-cover" />
                   <button
                     type="button"
                     onClick={() => onImageRemove(url)}
@@ -208,9 +209,12 @@ export function PropertyForm({
               ))}
               {imageFiles.map((file, i) => (
                 <div key={i} className="relative">
-                  <img
+                  <Image
                     src={URL.createObjectURL(file)}
                     alt=""
+                    width={80}
+                    height={80}
+                    unoptimized
                     className="w-20 h-20 rounded-lg object-cover"
                   />
                   <button

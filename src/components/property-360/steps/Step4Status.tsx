@@ -24,7 +24,9 @@ export default function Step4Status({ data, update, next, back }: Props) {
           <button
             key={s.value}
             onClick={() => update({ status: s.value })}
-            className={`border-2 rounded-xl py-4 px-5 text-right font-medium transition-all ${
+            type="button"
+            aria-pressed={data.status === s.value}
+            className={`min-h-14 border-2 py-4 px-5 text-right font-medium transition-all ${
               data.status === s.value
                 ? 'border-gold bg-gold/5 text-navy'
                 : 'border-gray-200 text-brand-muted hover:border-gold/50'

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Pencil, Trash2, AlertTriangle, Link2, Check } from 'lucide-react'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import type { Property } from '@/lib/types/property'
@@ -33,7 +34,7 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
   function copyLink(slug: string, id: string) {
-    navigator.clipboard.writeText(`https://${slug}.toprop.co.il`)
+    navigator.clipboard.writeText(`https://${slug}.prop360.co.il`)
     setCopiedId(id)
     setTimeout(() => setCopiedId(null), 2000)
   }
@@ -78,9 +79,12 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
                   <tr key={prop.id} className="border-b last:border-0 hover:bg-gray-50">
                     <td className="px-4 py-3">
                       {prop.images[0] ? (
-                        <img
+                        <Image
                           src={prop.images[0]}
                           alt=""
+                          width={48}
+                          height={48}
+                          unoptimized
                           className="w-12 h-12 rounded-lg object-cover"
                         />
                       ) : (
@@ -116,7 +120,7 @@ export function PropertiesTable({ properties, loading, onDelete }: PropertiesTab
                           onClick={() => copyLink(prop.slug, prop.id)}
                           className="p-1.5 rounded hover:bg-gray-100 text-gray-500 hover:text-brand-gold"
                           aria-label="העתק קישור"
-                          title={`https://${prop.slug}.toprop.co.il`}
+                          title={`https://${prop.slug}.prop360.co.il`}
                         >
                           {copiedId === prop.id ? (
                             <Check size={16} className="text-green-500" />

@@ -19,7 +19,9 @@ export default function Step1PropertyType({ data, update, next }: Props) {
           <button
             key={t}
             onClick={() => update({ property_type: t })}
-            className={`border-2 rounded-xl py-4 px-3 text-center font-medium transition-all ${
+            type="button"
+            aria-pressed={data.property_type === t}
+            className={`min-h-14 border-2 py-4 px-3 text-center font-medium transition-all ${
               data.property_type === t
                 ? 'border-gold bg-gold/5 text-navy'
                 : 'border-gray-200 text-brand-muted hover:border-gold/50'

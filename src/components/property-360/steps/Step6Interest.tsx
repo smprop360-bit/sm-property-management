@@ -1,4 +1,4 @@
-import type { Property360Data } from '@/app/actions/property360';
+﻿import type { Property360Data } from '@/app/actions/property360';
 
 type Props = {
   data: Property360Data;
@@ -12,7 +12,7 @@ const interests = [
   { value: 'long_term_rental', label: 'השכרה לטווח ארוך' },
   { value: 'airbnb', label: 'Airbnb / Short Term' },
   { value: 'improvement', label: 'השבחת הנכס' },
-  { value: 'partnership', label: 'שותפות עם TOPROP' },
+  { value: 'partnership', label: 'שותפות עם S&M Property Management' },
   { value: 'not_sure', label: 'לא בטוח — רוצה ייעוץ' },
 ];
 
@@ -33,7 +33,9 @@ export default function Step6Interest({ data, update, next, back }: Props) {
           <button
             key={i.value}
             onClick={() => toggle(i.value)}
-            className={`border-2 rounded-xl py-4 px-5 text-right font-medium transition-all ${
+            type="button"
+            aria-pressed={data.interests.includes(i.value)}
+            className={`min-h-14 border-2 py-4 px-5 text-right font-medium transition-all ${
               data.interests.includes(i.value)
                 ? 'border-gold bg-gold/5 text-navy'
                 : 'border-gray-200 text-brand-muted hover:border-gold/50'
@@ -56,3 +58,4 @@ export default function Step6Interest({ data, update, next, back }: Props) {
     </div>
   );
 }
+

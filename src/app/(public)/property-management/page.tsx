@@ -1,7 +1,7 @@
-import ServicePageTemplate from '@/components/services/ServicePageTemplate';
+﻿import ServicePageTemplate from '@/components/services/ServicePageTemplate';
 
 export const metadata = {
-  title: 'ניהול נכסים | TOPROP',
+  title: 'ניהול נכסים | S&M Property Management',
   description: 'ניהול מקצועי של נכסי מגורים לטווח ארוך — שוכרים, חוזים, תחזוקה ודוחות.',
 };
 
@@ -11,7 +11,7 @@ export default function PropertyManagementPage() {
       badge="ניהול נכסים"
       title="ניהול נכסים לטווח ארוך"
       subtitle="שוכרים איכותיים, חוזים מסודרים, תחזוקה שוטפת — ואתם פנויים."
-      body="TOPROP מנהלת את הנכס שלכם מקצה לקצה. אנחנו אחראים על מציאת שוכרים, ניהול חוזים, גביית שכירות, תחזוקה שוטפת, טיפול בתקלות ודיווח חודשי שקוף."
+      body="S&M Property Management מנהלת את הנכס שלכם מקצה לקצה. אנחנו אחראים על מציאת שוכרים, ניהול חוזים, גביית שכירות, תחזוקה שוטפת, טיפול בתקלות ודיווח חודשי שקוף."
       features={[
         'מציאת שוכרים מאומתים',
         'ניסוח וניהול חוזי שכירות',
@@ -23,3 +23,4 @@ export default function PropertyManagementPage() {
     />
   );
 }
+

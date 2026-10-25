@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';

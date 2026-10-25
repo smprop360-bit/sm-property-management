@@ -1646,7 +1646,7 @@ git commit -m "feat: add initial Supabase schema for properties and leads"
 # .env.example
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=<REDACTED_SECRET>
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
@@ -1661,7 +1661,7 @@ Create `.env.local`:
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
-SUPABASE_SERVICE_ROLE_KEY=<REDACTED_SECRET>
+SUPABASE_SERVICE_ROLE_KEY=eyJxxx...
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 

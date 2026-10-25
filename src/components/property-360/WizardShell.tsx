@@ -11,6 +11,7 @@ import Step6Interest from './steps/Step6Interest';
 import Step7Contact from './steps/Step7Contact';
 
 const TOTAL_STEPS = 7;
+const STEP_LABELS = ['סוג נכס', 'מיקום', 'פרטים', 'מצב', 'שכירות', 'עניין', 'קשר'];
 
 const initialData: Property360Data = {
   property_type: '',
@@ -57,20 +58,33 @@ export default function WizardShell() {
   const stepProps = { data, update, next, back };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-12">
-      <div className="mb-8">
-        <div className="flex justify-between text-xs text-brand-muted mb-2">
-          <span>שלב {step} מתוך {TOTAL_STEPS}</span>
-          <span>{Math.round((step / TOTAL_STEPS) * 100)}%</span>
+    <div className="max-w-2xl mx-auto px-4 pb-12">
+      <div className="mb-8 rounded-none border border-[#d9d2c7] bg-white p-5 shadow-[0_18px_50px_rgba(7,21,33,.06)] sm:p-8">
+        <div className="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-semibold tracking-[0.12em] text-[#b5853f]">PROPERTY360</p>
+            <p className="mt-1 font-heading text-xl text-navy">{STEP_LABELS[step - 1]}</p>
+          </div>
+          <div className="text-left text-xs text-brand-muted">
+            <span className="block">שלב {step} מתוך {TOTAL_STEPS}</span>
+            <span className="mt-1 block">{Math.round((step / TOTAL_STEPS) * 100)}%</span>
+          </div>
         </div>
-        <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+        <div
+          className="h-1.5 overflow-hidden bg-[#ece7de]"
+          role="progressbar"
+          aria-label="התקדמות בדיקת הנכס"
+          aria-valuemin={1}
+          aria-valuemax={TOTAL_STEPS}
+          aria-valuenow={step}
+        >
           <div
-            className="h-full bg-gold rounded-full transition-all duration-300"
+            className="h-full bg-gold transition-all duration-300"
             style={{ width: `${(step / TOTAL_STEPS) * 100}%` }}
           />
         </div>
       </div>
-
+      <div className="border-t-2 border-navy bg-white px-5 py-7 shadow-[0_18px_50px_rgba(7,21,33,.06)] sm:px-8 sm:py-9">
       {step === 1 && <Step1PropertyType {...stepProps} />}
       {step === 2 && <Step2Location {...stepProps} />}
       {step === 3 && <Step3Details {...stepProps} />}
@@ -85,6 +99,7 @@ export default function WizardShell() {
           error={error}
         />
       )}
+      </div>
     </div>
   );
 }

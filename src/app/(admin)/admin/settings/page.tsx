@@ -15,8 +15,8 @@ const OPENAI_MODELS = [
   { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo — הכי זול' },
 ]
 
-const LS_KEY  = 'toprop_openai_key'
-const LS_MODEL = 'toprop_openai_model'
+const LS_KEY  = 'sm_openai_key'
+const LS_MODEL = 'sm_openai_model'
 
 export default function AdminSettingsPage() {
   /* ── AI settings ── */

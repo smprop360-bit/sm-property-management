@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -9,7 +9,7 @@ const steps = [
   { n: 2, title: 'Property Review', body: 'אנחנו בוחנים את הנכס ומכינים המלצת מסלול.' },
   { n: 3, title: 'בוחרים מסלול', body: 'ארוך טווח, Airbnb, מסחרי, השבחה — ביחד מחליטים.' },
   { n: 4, title: 'קליטה למערכת', body: 'הנכס נכנס למערכת, חוזים, מפתחות ואנשי קשר.' },
-  { n: 5, title: 'TOPROP מנהלת', body: 'אנחנו מטפלים בכל — שוכרים, ספקים, תחזוקה.' },
+  { n: 5, title: 'S&M Property Management מנהלת', body: 'אנחנו מטפלים בכל — שוכרים, ספקים ותחזוקה.' },
   { n: 6, title: 'דוחות ושקיפות', body: 'מקבלים דוחות חודשיים ועדכונים שוטפים.' },
 ];
 

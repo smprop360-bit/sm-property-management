@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowLeft, Phone, CheckCircle } from 'lucide-react';
 
 const floatingStats = [
@@ -75,7 +75,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/70 text-lg leading-relaxed mb-8 max-w-xl"
             >
-              TOPROP מנהלת, משכירה ומשביחה נכסים פרטיים ומסחריים — עם שירות מלא, שקיפות מלאה
+              S&amp;M Property Management מנהלת ומלווה נכסים פרטיים ומסחריים — עם שירות אישי ותהליך מסודר
               ותשואה מקסימלית.
             </motion.p>
 

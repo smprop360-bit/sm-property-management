@@ -58,27 +58,33 @@ export function LeadsChart() {
 
   if (loading) {
     return (
-      <div className="bg-white rounded-xl p-6 shadow-sm">
-        <div className="h-[220px] bg-gray-50 animate-pulse rounded" />
+      <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.05)]">
+        <div className="h-[220px] animate-pulse rounded-xl bg-slate-50" />
       </div>
     )
   }
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
-      <h3 className="text-base font-semibold text-brand-navy mb-4">לידים — 30 יום אחרונים</h3>
+    <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.05)]">
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <p className="text-sm font-medium text-brand-muted">פעילות אחרונה</p>
+          <h3 className="mt-1 text-lg font-semibold text-brand-navy">לידים — 30 יום אחרונים</h3>
+        </div>
+        <span className="rounded-full bg-brand-gold/10 px-3 py-1 text-xs font-medium text-brand-gold">לידים</span>
+      </div>
       <ResponsiveContainer width="100%" height={220}>
         <BarChart data={data} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e8edf3" />
           <XAxis
             dataKey="day"
-            tick={{ fontSize: 11, fill: '#9ca3af' }}
+            tick={{ fontSize: 11, fill: '#94a3b8' }}
             tickLine={false}
             axisLine={false}
             interval={4}
           />
           <YAxis
-            tick={{ fontSize: 11, fill: '#9ca3af' }}
+            tick={{ fontSize: 11, fill: '#94a3b8' }}
             tickLine={false}
             axisLine={false}
             allowDecimals={false}
@@ -90,7 +96,7 @@ export function LeadsChart() {
               boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
             }}
           />
-          <Bar dataKey="count" name="לידים" fill="#C9A227" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="count" name="לידים" fill="#C8902E" radius={[6, 6, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

@@ -1,7 +1,7 @@
-import WizardShell from '@/components/property-360/WizardShell';
+﻿import WizardShell from '@/components/property-360/WizardShell';
 
 export const metadata = {
-  title: 'Property 360 | TOPROP',
+  title: 'Property 360 | S&M Property Management',
   description: 'בדיקת הנכס שלך — השוואת מסלולים, פוטנציאל השבחה והמלצת פעולה.',
 };
 
@@ -23,3 +23,4 @@ export default function Property360Page() {
     </div>
   );
 }
+

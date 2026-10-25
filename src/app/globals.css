@@ -51,8 +51,9 @@
   --color-brand-navy: #08274F;
   --color-brand-gold: #C8902E;
   --color-brand-light: #F7F8FA;
-  --font-sans: var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-frank), var(--font-heebo), ui-sans-serif, system-ui, sans-serif;
+  /* Keep development/build independent from external font downloads. */
+  --font-sans: Arial, "Noto Sans Hebrew", "Segoe UI", sans-serif;
+  --font-heading: Georgia, "Noto Serif Hebrew", "Times New Roman", serif;
 }
 
 body {
@@ -100,6 +101,11 @@ body {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .dark {

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { CheckCircle2 } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 
@@ -34,7 +34,7 @@ export default function Property360Section() {
               </span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-navy mb-3">
-              TOPROP Property 360
+              S&amp;M Property Management / PROPERTY360
             </h2>
             <p className="text-brand-muted text-lg mb-8">
               לא בטוחים מה הדרך הנכונה להשכיר או להפעיל את הנכס?

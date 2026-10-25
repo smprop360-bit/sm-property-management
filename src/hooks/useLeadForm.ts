@@ -9,6 +9,8 @@ interface FormValues {
   full_name: string
   phone: string
   email: string
+  city: string
+  property_type: string
   message: string
 }
 
@@ -28,13 +30,15 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
     full_name: '',
     phone: '',
     email: '',
+    city: '',
+    property_type: '',
     message: '',
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [loading, setLoading] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
 
-  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     const { name, value } = e.target
     setValues(prev => ({ ...prev, [name]: value }))
     if (errors[name as keyof FormErrors]) {
@@ -68,6 +72,8 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
       full_name: values.full_name.trim(),
       phone: values.phone.trim(),
       email: values.email.trim() || null,
+      city: values.city.trim() || null,
+      property_type: values.property_type || null,
       message: values.message.trim() || null,
       lead_type: leadType,
       property_id: propertyId ?? null,

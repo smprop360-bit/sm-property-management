@@ -1,38 +1,30 @@
 import type { Metadata } from 'next'
-import { Heebo, Frank_Ruhl_Libre } from 'next/font/google'
 import './globals.css'
-
-const heebo = Heebo({
-  subsets: ['hebrew', 'latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-heebo',
-  display: 'swap',
-})
-
-const frank = Frank_Ruhl_Libre({
-  subsets: ['hebrew', 'latin'],
-  weight: ['300', '400', '500', '700', '900'],
-  variable: '--font-frank',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
   title: {
-    default: 'TOPROP | ניהול נכסים, השכרה והשקעות',
-    template: '%s | TOPROP',
+    default: 'S&M Property Management | ניהול נכסים בגישה אישית',
+    template: '%s | S&M Property Management',
   },
-  description: 'TOPROP מנהלת, משכירה ומשביחה נכסים פרטיים ומסחריים. שירות מלא לבעלי נכסים ומשקיעים.',
-  metadataBase: new URL('https://toprop.co.il'),
+  description: 'ניהול נכסים, השכרה, תחזוקה ו-PROPERTY360 — עם תקשורת ברורה ותהליך עבודה מסודר.',
+  metadataBase: new URL('https://prop360.co.il'),
+  alternates: {
+    canonical: 'https://prop360.co.il',
+  },
   openGraph: {
-    siteName: 'TOPROP',
+    siteName: 'S&M Property Management',
+    url: 'https://prop360.co.il',
     locale: 'he_IL',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${frank.variable}`}>
+    <html lang="he" dir="rtl">
       <body className="font-sans antialiased">{children}</body>
     </html>
   )

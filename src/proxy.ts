@@ -5,7 +5,7 @@ export function proxy(request: NextRequest) {
   const hostname = host.split(':')[0]
   const parts = hostname.split('.')
 
-  // Skip plain localhost, plain domain (toprop.co.il = 2 parts), or IPv4
+  // Skip plain localhost, the current two-part domain, or IPv4
   if (parts.length <= 2 || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
     return NextResponse.next()
   }

@@ -3,7 +3,7 @@
     "21st": {
       "url": "https://21st.dev/api/mcp",
       "headers": {
-        "x-api-key": "<REDACTED_21ST_API_KEY>"
+        "x-api-key": "21st_sk_e34756a7a10753bf9a2fd39586963e78e25047786000f0dbe2aede79c912c4d8"
       }
     }
   }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Building2, Waves, Briefcase, TrendingUp, Handshake } from 'lucide-react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 

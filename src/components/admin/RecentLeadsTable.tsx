@@ -24,8 +24,14 @@ export function RecentLeadsTable() {
   }, [])
 
   return (
-    <div className="bg-white rounded-xl p-6 shadow-sm">
-      <h3 className="text-base font-semibold text-brand-navy mb-4">לידים אחרונים</h3>
+    <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_8px_30px_rgba(15,23,42,0.05)]">
+      <div className="mb-5 flex items-center justify-between gap-4">
+        <div>
+          <p className="text-sm font-medium text-brand-muted">מעקב</p>
+          <h3 className="mt-1 text-lg font-semibold text-brand-navy">לידים אחרונים</h3>
+        </div>
+        <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">10 אחרונים</span>
+      </div>
       {loading ? (
         <div className="space-y-3">
           {Array.from({ length: 5 }).map((_, i) => (
@@ -36,27 +42,27 @@ export function RecentLeadsTable() {
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="text-gray-500 border-b">
-                <th className="text-start py-2 font-medium">שם</th>
-                <th className="text-start py-2 font-medium">טלפון</th>
-                <th className="text-start py-2 font-medium">סוג</th>
-                <th className="text-start py-2 font-medium">עיר</th>
-                <th className="text-start py-2 font-medium">סטטוס</th>
-                <th className="text-start py-2 font-medium">תאריך</th>
+              <tr className="border-b border-slate-200 text-slate-400">
+                <th className="py-3 text-start text-xs font-medium">שם</th>
+                <th className="py-3 text-start text-xs font-medium">טלפון</th>
+                <th className="py-3 text-start text-xs font-medium">סוג</th>
+                <th className="py-3 text-start text-xs font-medium">עיר</th>
+                <th className="py-3 text-start text-xs font-medium">סטטוס</th>
+                <th className="py-3 text-start text-xs font-medium">תאריך</th>
               </tr>
             </thead>
             <tbody>
               {leads.map(lead => (
-                <tr key={lead.id} className="border-b last:border-0 hover:bg-gray-50">
-                  <td className="py-2.5 font-medium">{lead.full_name}</td>
-                  <td className="py-2.5 text-gray-600">{lead.phone}</td>
-                  <td className="py-2.5 text-gray-600">
+                <tr key={lead.id} className="border-b border-slate-100 last:border-0 hover:bg-slate-50/70">
+                  <td className="py-3 font-medium text-brand-navy">{lead.full_name}</td>
+                  <td className="py-3 text-slate-600">{lead.phone}</td>
+                  <td className="py-3 text-slate-600">
                     {lead.property_type
                       ? (PROPERTY_TYPE_LABELS[lead.property_type as keyof typeof PROPERTY_TYPE_LABELS] ?? lead.property_type)
                       : '—'}
                   </td>
-                  <td className="py-2.5 text-gray-600">{lead.city ?? '—'}</td>
-                  <td className="py-2.5">
+                  <td className="py-3 text-slate-600">{lead.city ?? '—'}</td>
+                  <td className="py-3">
                     <span
                       className={cn(
                         'inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium',
@@ -66,7 +72,7 @@ export function RecentLeadsTable() {
                       {lead.status}
                     </span>
                   </td>
-                  <td className="py-2.5 text-gray-500">
+                  <td className="py-3 text-slate-500">
                     {new Date(lead.created_at).toLocaleDateString('he-IL', {
                       day: '2-digit',
                       month: '2-digit',

@@ -143,7 +143,7 @@ export function PropertyLandingPage({ data }: Props) {
           {/* Subtitle / street */}
           <p className="flex items-center gap-2 text-brand-gold font-bold mb-6" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)' }}>
             <MapPin size={18} className="shrink-0" />
-            {subtitle}
+            {subtitle} · {city}
           </p>
 
           {/* Size / Price box */}
