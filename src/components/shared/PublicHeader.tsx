@@ -13,6 +13,7 @@ const navLinks = [
   { href: '/commercial-property-management', label: 'מסחרי' },
   { href: '/investors', label: 'למשקיעים' },
   { href: '/how-it-works', label: 'איך זה עובד' },
+  { href: '/blog', label: 'מאמרים' },
   { href: '/about', label: 'אודות' },
   { href: '/contact', label: 'צור קשר' },
 ];
