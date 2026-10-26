@@ -25,13 +25,13 @@ export default function PublicFooter() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-5">
               <Image
-                src="/logo.png"
+                src="/sm-logo.png"
                 alt="S&M Property Management"
                 width={72}
                 height={72}
                 style={{ borderRadius: '50%', filter: 'drop-shadow(0 0 16px rgba(200,144,46,0.4))' }}
               />
-              <div className="flex flex-col leading-none gap-0.5">
+              <div className="flex flex-col leading-none gap-0.5 items-end">
                 <span className="font-heading font-black tracking-wide leading-none"
                   style={{ fontSize: '1.6rem', color: '#C8902E', textShadow: '0 0 24px rgba(200,144,46,0.4)' }}>
                   S&amp;M
@@ -111,8 +111,11 @@ export default function PublicFooter() {
             © {new Date().getFullYear()} S&amp;M Property Management. כל הזכויות שמורות.
           </p>
           <div className="flex gap-6">
-            <Link href="/en" className="text-xs text-white/25 hover:text-white/50 transition-colors">
-              English
+            <Link href="/accessibility" className="text-xs text-white/25 hover:text-white/50 transition-colors">
+              הצהרת נגישות
+            </Link>
+            <Link href="/privacy" className="text-xs text-white/25 hover:text-white/50 transition-colors">
+              מדיניות פרטיות
             </Link>
           </div>
         </div>
