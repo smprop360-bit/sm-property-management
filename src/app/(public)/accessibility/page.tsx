@@ -109,7 +109,7 @@ export default function AccessibilityPage() {
             <p>
               למידע נוסף על נגישות דיגיטלית בישראל ניתן לפנות ל
               <a
-                href="https://www.gov.il/he/departments/topics/access_law"
+                href="https://www.gov.il/he/departments/moj_disability_rights"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline mx-1"
