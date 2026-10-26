@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { CheckCircle2 } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 

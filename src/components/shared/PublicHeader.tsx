@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -46,14 +46,14 @@ export default function PublicHeader() {
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src="/sm-logo.png"
               alt="S&M Property Management"
               width={48}
               height={48}
               priority
               style={{ borderRadius: '50%', filter: 'drop-shadow(0 0 10px rgba(200,144,46,0.5))' }}
             />
-            <div className="flex flex-col leading-none gap-0.5">
+            <div className="flex flex-col leading-none gap-0.5 items-end">
               <span className="font-heading font-black tracking-wide leading-none"
                 style={{ fontSize: '1.6rem', color: '#C8902E', textShadow: '0 0 24px rgba(200,144,46,0.5)' }}>
                 S&amp;M
@@ -87,12 +87,6 @@ export default function PublicHeader() {
               className="text-sm text-white/40 hover:text-white/70 transition-colors"
             >
               כניסת בעלי נכסים
-            </Link>
-            <Link
-              href="/property-360"
-              className="bg-gold hover:bg-gold-soft text-white text-sm font-semibold px-5 py-2.5 transition-colors"
-            >
-              בדיקת הנכס שלי
             </Link>
           </div>
 
@@ -129,13 +123,6 @@ export default function PublicHeader() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/property-360"
-            className="bg-gold text-white text-center font-semibold px-4 py-3 mt-2"
-            onClick={() => setMobileOpen(false)}
-          >
-            בדיקת הנכס שלי
-          </Link>
         </motion.div>
       )}
     </header>

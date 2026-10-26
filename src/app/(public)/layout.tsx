@@ -1,5 +1,6 @@
 import PublicHeader from '@/components/shared/PublicHeader'
 import PublicFooter from '@/components/shared/PublicFooter'
+import WhatsAppButton from '@/components/shared/WhatsAppButton'
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -7,6 +8,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <PublicHeader />
       <main className="flex-1">{children}</main>
       <PublicFooter />
+      <WhatsAppButton />
     </div>
   )
 }

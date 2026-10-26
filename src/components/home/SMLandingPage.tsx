@@ -19,12 +19,11 @@ import {
   Star,
   Quote,
 } from 'lucide-react';
-import { motion, useInView } from 'motion/react';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import { LeadForm } from '@/components/forms/LeadForm';
-import { Marquee } from '@/components/ui/marquee';
 
 /* ─── Glass card helper ─── */
 const glassCard: React.CSSProperties = {
@@ -47,12 +46,12 @@ const goldText: React.CSSProperties = {
    DATA
 ───────────────────────────────────────────── */
 const services = [
-  { icon: Building2, title: 'ניהול נכסים למגורים', body: 'טיפול שוטף — שוכרים, חוזים, תחזוקה ודוחות חודשיים מפורטים.', href: '/property-management' },
-  { icon: Briefcase, title: 'ניהול נכסים מסחריים', body: 'ניהול משרדים, חנויות ונכסים מניבים עם חשיבה עסקית.', href: '/commercial-property-management' },
-  { icon: TrendingUp, title: 'השכרה ואיתור שוכרים', body: 'שיווק הנכס, בדיקת שוכרים וליווי כל תהליך ההשכרה.', href: '/services' },
-  { icon: Handshake, title: 'ליווי בעלי נכסים', body: 'ייעוץ, ליווי אישי ושותפות לבעלי נכסים ומשקיעים.', href: '/investors' },
-  { icon: Wrench, title: 'תחזוקה וטיפול בתקלות', body: 'רשת ספקים מקצועית. תיקונים, שיפוצים וטיפול בכל בקשה.', href: '/services' },
-  { icon: Eye, title: 'שקיפות ודיווח', body: 'דוחות חודשיים ברורים וגישה מלאה למידע בכל רגע.', href: '/services' },
+  { icon: Building2, title: 'ניהול נכסים למגורים', body: 'טיפול שוטף — שוכרים, חוזים, תחזוקה ודוחות חודשיים מפורטים.', href: '/property-management', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80' },
+  { icon: Briefcase, title: 'ניהול נכסים מסחריים', body: 'ניהול משרדים, חנויות ונכסים מניבים עם חשיבה עסקית.', href: '/commercial-property-management', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80' },
+  { icon: TrendingUp, title: 'השכרה ואיתור שוכרים', body: 'שיווק הנכס, בדיקת שוכרים וליווי כל תהליך ההשכרה.', href: '/services', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80' },
+  { icon: Handshake, title: 'ליווי בעלי נכסים', body: 'ייעוץ, ליווי אישי ושותפות לבעלי נכסים ומשקיעים.', href: '/investors', img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80' },
+  { icon: Wrench, title: 'תחזוקה וטיפול בתקלות', body: 'רשת ספקים מקצועית. תיקונים, שיפוצים וטיפול בכל בקשה.', href: '/services', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80' },
+  { icon: Eye, title: 'שקיפות ודיווח', body: 'דוחות חודשיים ברורים וגישה מלאה למידע בכל רגע.', href: '/services', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
 ];
 
 const stats = [
@@ -77,13 +76,12 @@ const whyItems = [
   { icon: '📍', title: 'כתובת אחת', body: 'שוכרים, ספקים, חוזים — הכל דרכנו.' },
   { icon: '🛡️', title: 'ניהול מקצועי', body: 'צוות מנוסה עם גישה שיטתית.' },
   { icon: '📊', title: 'טכנולוגיה', body: 'מערכת דיגיטלית עם מעקב הכנסות.' },
+  { icon: '🌍', title: 'משקיעים בינלאומיים', body: 'עובדים צמוד עם משקיעים מחו״ל — ליווי מקצועי בשפה שלהם.' },
 ];
 
 const team = [
-  { name: 'שלומי לימור', role: 'שותף מייסד', initials: 'ש', stripe: 'navy', tags: ['ניהול נכסים', 'קשרי שוכרים'] },
-  { name: 'מוטי גינדי', role: 'שותף מייסד', initials: 'מ', stripe: 'gold', tags: ['נכסים מסחריים', 'תכנון פיננסי'] },
-  { name: 'ליאת כהן', role: 'מנהלת לקוחות', initials: 'ל', stripe: 'navy', tags: ['שירות לקוחות', 'חוזים'] },
-  { name: 'אמיר שלו', role: 'ראש תחום תחזוקה', initials: 'א', stripe: 'gold', tags: ['תחזוקה', 'ספקים'] },
+  { name: 'שלומי לימור', role: 'שותף מייסד', initials: 'ש', stripe: 'navy', tags: ['ניהול נכסים', 'קשרי שוכרים'], email: 'shlomy@prop360.co.il', phone: '055-260-1077', phoneHref: 'tel:+972552601077', waHref: 'https://wa.me/972552601077', bio: 'מומחה לניהול נכסים למגורים עם ניסיון של מעל 10 שנים בשוק הנדל"ן הישראלי. מתמחה בקשרי שוכרים ופתרון אתגרים שוטפים.' },
+  { name: 'מוטי גינדי', role: 'שותף מייסד', initials: 'מ', stripe: 'gold', tags: ['נכסים מסחריים', 'תכנון פיננסי'], email: 'moty@prop360.co.il', phone: '052-577-6892', phoneHref: 'tel:+972525776892', waHref: 'https://wa.me/972525776892', bio: 'מתמחה בנכסים מסחריים ובתכנון פיננסי אסטרטגי. מביא ניסיון רב בניהול תיקי השקעות נדל"ן של לקוחות בארץ ובחו"ל.' },
 ];
 
 const testimonials = [
@@ -93,11 +91,6 @@ const testimonials = [
   { quote: 'השוכרים מרוצים, הנכס מתוחזק, והדוחות שקופים לגמרי. המקצועיות ברמה אחרת.', name: 'מיכל שפירא', role: 'בעלת נכס, הרצליה', initials: 'מ.ש', rating: 5 },
 ];
 
-const partners = [
-  'רוטשטיין נדל"ן', 'קבוצת גבעות', 'אלדד ושות׳',
-  'כרמל נכסים', 'ביתן נדל"ן', 'גוש 3000',
-  'מגדל השקעות', 'ישראל נכסים', 'פרמיום פרופ׳',
-];
 
 /* ─── Section label component ─── */
 function SectionLabel({ children }: { children: React.ReactNode }) {
@@ -156,7 +149,7 @@ export default function SMLandingPage() {
           HERO
       ══════════════════════════════════════ */}
       <section
-        className="relative min-h-screen flex flex-col justify-center items-start overflow-hidden"
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden"
         style={{
           padding: '7rem 8% 6rem',
           backgroundImage: `
@@ -176,11 +169,12 @@ export default function SMLandingPage() {
 
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <Image src="/logo.png" alt="" width={480} height={480} priority aria-hidden
+          <Image src="/sm-logo.png" alt="" width={480} height={480} priority aria-hidden
             style={{ borderRadius: '50%', opacity: 0.06, filter: 'blur(2px)' }} />
         </div>
 
-        <div className="relative z-10 max-w-2xl">
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
+          <div className="flex-1 max-w-xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -188,7 +182,7 @@ export default function SMLandingPage() {
             className="mb-8"
           >
             <Image
-              src="/logo.png"
+              src="/sm-logo.png"
               alt="S&M Property Management"
               width={80}
               height={80}
@@ -206,7 +200,7 @@ export default function SMLandingPage() {
           >
             הנכס שלכם.{' '}
             <br />
-            <span style={goldText}>השקט שלנו לדאוג לו.</span>
+            <span style={goldText}>תנו לנו לדאוג לשקט שלכם.</span>
           </motion.h1>
 
           <motion.p
@@ -250,6 +244,77 @@ export default function SMLandingPage() {
               <ArrowLeft size={16} style={{ color: '#C8902E' }} />
             </Link>
           </motion.div>
+          </div>
+
+          {/* ── Right: property dashboard panel ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="hidden lg:block w-full max-w-sm shrink-0"
+          >
+            {/* Property card */}
+            <div style={{ ...glassCard, overflow: 'hidden', borderColor: 'rgba(200,144,46,0.3)' }}>
+              <div
+                style={{
+                  backgroundImage: `url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&q=80')`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  height: '180px',
+                  position: 'relative',
+                }}
+              >
+                <span style={{
+                  position: 'absolute', top: 12, right: 12,
+                  background: 'rgba(16,180,90,0.18)', border: '1px solid rgba(16,180,90,0.45)',
+                  color: '#4ddb8f', borderRadius: 20, padding: '3px 10px',
+                  fontSize: '0.72rem', fontWeight: 700,
+                }}>מושכר ✓</span>
+                <span style={{
+                  position: 'absolute', bottom: 12, right: 12,
+                  background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)',
+                  color: '#fff', borderRadius: 8, padding: '3px 10px',
+                  fontSize: '0.75rem', fontWeight: 600, border: '1px solid rgba(255,255,255,0.12)',
+                }}>📍 תל אביב</span>
+              </div>
+              <div style={{ padding: '14px 18px' }}>
+                <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '0.73rem', marginBottom: 3 }}>ניהול נכסים | דירה 4 חדרות</p>
+                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem' }}>רחוב דיזנגוף, תל אביב</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: '1px solid rgba(255,255,255,0.07)', padding: '12px 18px' }}>
+                <div>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>תשואה שנתית</p>
+                  <p style={{ fontWeight: 800, ...goldText, fontSize: '1.15rem' }}>6.8%</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>שכר דירה</p>
+                  <p style={{ fontWeight: 800, color: '#fff', fontSize: '1.15rem' }}>₪7,200</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Stat chips */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 10 }}>
+              {([
+                { label: 'נכסים מנוהלים', value: '500+', gold: true },
+                { label: 'שיעור תפוסה', value: '97%', gold: false },
+              ] as { label: string; value: string; gold: boolean }[]).map(stat => (
+                <div key={stat.label} style={{ ...glassCard, padding: '12px 16px', borderColor: 'rgba(200,144,46,0.2)' }}>
+                  <p style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.38)', marginBottom: 3 }}>{stat.label}</p>
+                  <p style={{ fontWeight: 800, fontSize: '1.3rem', ...(stat.gold ? goldText : { color: '#fff' }) }}>{stat.value}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* S&M badge */}
+            <div style={{ ...glassCard, marginTop: 10, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10, borderColor: 'rgba(200,144,46,0.3)' }}>
+              <Image src="/sm-logo.png" alt="S&M" width={32} height={32} style={{ borderRadius: '50%', flexShrink: 0 }} />
+              <div>
+                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem' }}>S&M מנהלת את הנכס שלכם</p>
+                <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.72rem' }}>prop360.co.il</p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -262,10 +327,13 @@ export default function SMLandingPage() {
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
             הנכס שלכם. הניהול שלנו.
           </h2>
+          <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '1.05rem', maxWidth: '520px', marginTop: '0.75rem' }}>
+            מגורים, מסחר, השכרה ותחזוקה — מעטפת שירות מלאה לבעלי נכסים ומשקיעים.
+          </p>
           <GoldDivider />
         </AnimatedSection>
 
-        <div ref={servicesRef} className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+        <div ref={servicesRef} className="grid gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -275,16 +343,26 @@ export default function SMLandingPage() {
                 animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
               >
-                <Link href={s.href} className="glass-card block h-full p-8" style={glassCard}>
-                  <div className="w-13 h-13 rounded-xl flex items-center justify-center mb-5"
-                    style={{ background: 'rgba(200,144,46,0.18)', width: 52, height: 52 }}>
-                    <Icon size={22} style={{ color: '#C8902E' }} />
+                <Link href={s.href} className="glass-card block h-full overflow-hidden" style={{ ...glassCard, padding: 0 }}>
+                  <div
+                    style={{
+                      backgroundImage: `url('${s.img}')`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      height: '175px',
+                    }}
+                  />
+                  <div className="p-6">
+                    <div className="rounded-xl flex items-center justify-center mb-4"
+                      style={{ background: 'rgba(200,144,46,0.18)', width: 44, height: 44 }}>
+                      <Icon size={19} style={{ color: '#C8902E' }} />
+                    </div>
+                    <h3 className="font-bold text-white mb-2" style={{ fontSize: '1rem' }}>{s.title}</h3>
+                    <p className="leading-relaxed" style={{ fontSize: '.85rem', color: 'rgba(255,255,255,0.60)' }}>{s.body}</p>
+                    <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold" style={{ color: '#C8902E' }}>
+                      קראו עוד <ArrowLeft size={12} />
+                    </span>
                   </div>
-                  <h3 className="font-bold text-white mb-2" style={{ fontSize: '1.12rem' }}>{s.title}</h3>
-                  <p className="leading-relaxed" style={{ fontSize: '.9rem', color: 'rgba(255,255,255,0.60)' }}>{s.body}</p>
-                  <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold" style={{ color: '#C8902E' }}>
-                    קראו עוד <ArrowLeft size={13} />
-                  </span>
                 </Link>
               </motion.div>
             );
@@ -317,36 +395,29 @@ export default function SMLandingPage() {
         </div>
       </section>
 
+
       {/* ══════════════════════════════════════
-          PARTNERS MARQUEE
+          COVERAGE CITIES
       ══════════════════════════════════════ */}
-      <section
-        style={{
-          background: '#091524',
-          borderBottom: '1px solid rgba(255,255,255,0.06)',
-          padding: '3rem 0',
-        }}
-      >
-        <p className="text-center text-xs font-bold tracking-widest uppercase mb-8 px-8" style={{ color: 'rgba(255,255,255,0.35)' }}>
-          בוטחים בנו
-        </p>
-        <Marquee speed={35} pauseOnHover gap={16} className="text-[#091524]">
-          {partners.map((name) => (
-            <span
-              key={name}
-              className="inline-flex items-center whitespace-nowrap font-semibold text-sm px-6 py-3 rounded-full cursor-default select-none transition-all duration-300"
-              style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.10)',
-                color: 'rgba(255,255,255,0.55)',
-              }}
-              onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(200,144,46,0.45)'; (e.currentTarget as HTMLSpanElement).style.color = '#e5a83e'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.borderColor = 'rgba(255,255,255,0.10)'; (e.currentTarget as HTMLSpanElement).style.color = 'rgba(255,255,255,0.55)'; }}
-            >
-              {name}
-            </span>
-          ))}
-        </Marquee>
+      <section style={{ background: '#091524', borderTop: '1px solid rgba(200,144,46,0.10)', padding: '2.5rem 8%' }}>
+        <AnimatedSection direction="up">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-7xl mx-auto">
+            <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', flexShrink: 0 }}>
+              אזורי פעילות
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {['תל אביב', 'רמת גן', 'הרצליה', 'נתניה', 'פתח תקווה', 'רעננה', 'כפר סבא', 'ראש העין', 'ירושלים', 'חיפה'].map(city => (
+                <span
+                  key={city}
+                  className="text-sm font-medium px-4 py-1.5 rounded-full"
+                  style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)', color: 'rgba(255,255,255,0.55)' }}
+                >
+                  {city}
+                </span>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
       </section>
 
       {/* ══════════════════════════════════════
@@ -356,7 +427,7 @@ export default function SMLandingPage() {
         <AnimatedSection direction="up">
           <div className="flex items-center gap-4 mb-3">
             <Image
-              src="/logo.png"
+              src="/sm-logo.png"
               alt="S&M"
               width={44}
               height={44}
@@ -449,7 +520,7 @@ export default function SMLandingPage() {
 
             <div className="shrink-0 relative z-10">
               <Image
-                src="/logo.png"
+                src="/sm-logo.png"
                 alt="S&M Property Management"
                 width={72}
                 height={72}
@@ -504,7 +575,7 @@ export default function SMLandingPage() {
         <AnimatedSection direction="up">
           <div className="flex items-center gap-4 mb-3">
             <Image
-              src="/logo.png"
+              src="/sm-logo.png"
               alt="S&M"
               width={44}
               height={44}
@@ -519,7 +590,7 @@ export default function SMLandingPage() {
           <GoldDivider />
         </AnimatedSection>
 
-        <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -558,7 +629,8 @@ export default function SMLandingPage() {
                   </div>
                 </div>
                 {/* Body */}
-                <div className="p-5">
+                <div className="p-5 space-y-4">
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.58)', lineHeight: 1.65 }}>{member.bio}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {member.tags.map(tag => (
                       <span
@@ -570,6 +642,38 @@ export default function SMLandingPage() {
                       </span>
                     ))}
                   </div>
+                  <a
+                    href={member.phoneHref}
+                    className="flex items-center gap-2 text-xs font-semibold transition-colors"
+                    style={{ color: 'rgba(255,255,255,0.42)' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#C8902E')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.42)')}
+                  >
+                    <Phone size={13} style={{ flexShrink: 0 }} />
+                    {member.phone}
+                  </a>
+                  <a
+                    href={member.waHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-xs font-semibold transition-colors"
+                    style={{ color: 'rgba(255,255,255,0.42)' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#25D366')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.42)')}
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                  </a>
+                  <a
+                    href={`mailto:${member.email}`}
+                    className="flex items-center gap-2 text-xs font-semibold transition-colors"
+                    style={{ color: 'rgba(255,255,255,0.42)' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = '#C8902E')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.42)')}
+                  >
+                    <Mail size={13} style={{ flexShrink: 0 }} />
+                    {member.email}
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -655,8 +759,9 @@ export default function SMLandingPage() {
 
             <ul className="space-y-5 mb-10">
               {[
-                { icon: Phone, label: 'טלפון', value: '055-260-1077', href: 'tel:+972552601077' },
-                { icon: Mail, label: 'אימייל', value: 'info@sm-property.co.il', href: 'mailto:info@sm-property.co.il' },
+                { icon: Phone, label: 'שלומי לימור', value: '055-260-1077', href: 'tel:+972552601077' },
+                { icon: Phone, label: 'מוטי גינדי', value: '052-577-6892', href: 'tel:+972525776892' },
+                { icon: Mail, label: 'אימייל', value: 'info@prop360.co.il', href: 'mailto:info@prop360.co.il' },
                 { icon: MapPin, label: 'כתובת', value: 'תל אביב, ישראל', href: null },
               ].map(item => {
                 const Icon = item.icon;
