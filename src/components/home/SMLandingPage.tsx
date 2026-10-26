@@ -24,6 +24,7 @@ import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import { LeadForm } from '@/components/forms/LeadForm';
+import { getLatestArticles } from '@/lib/blog';
 
 /* ─── Glass card helper ─── */
 const glassCard: React.CSSProperties = {
@@ -122,6 +123,7 @@ export default function SMLandingPage() {
   const teamInView = useInView(teamRef, { once: true, margin: '-60px' });
   const testimonialsRef = useRef(null);
   const testimonialsInView = useInView(testimonialsRef, { once: true, margin: '-60px' });
+  const latestArticles = getLatestArticles(3);
 
   return (
     <div style={{ background: '#091524', color: '#fff' }}>
@@ -498,6 +500,67 @@ export default function SMLandingPage() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* ══════════════════════════════════════
+          BLOG PREVIEW
+      ══════════════════════════════════════ */}
+      <section style={{ background: '#091524', padding: '5rem 8%' }}>
+        <AnimatedSection direction="up">
+          <SectionLabel>מאמרים ומדריכים</SectionLabel>
+          <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
+            ידע שעושה{' '}
+            <span style={goldText}>הבדל אמיתי.</span>
+          </h2>
+          <GoldDivider />
+        </AnimatedSection>
+
+        <div className="grid gap-5 grid-cols-1 sm:grid-cols-3 mt-2">
+          {latestArticles.map((article, i) => (
+            <AnimatedSection key={article.slug} direction="up" delay={i * 0.1}>
+              <Link
+                href={`/blog/${article.slug}`}
+                className="glass-card block h-full p-6 transition-all duration-300"
+                style={{
+                  ...glassCard,
+                  textDecoration: 'none',
+                }}
+              >
+                <span
+                  className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4 inline-block"
+                  style={{ background: 'rgba(200,144,46,0.14)', color: '#e5a83e' }}
+                >
+                  {article.category}
+                </span>
+                <h3 className="font-bold text-white leading-snug mb-3 line-clamp-2" style={{ fontSize: '1rem' }}>
+                  {article.title}
+                </h3>
+                <p className="text-sm leading-6 line-clamp-2 mb-4" style={{ color: 'rgba(255,255,255,0.52)' }}>
+                  {article.excerpt}
+                </p>
+                <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                  <span className="text-xs" style={{ color: 'rgba(255,255,255,0.32)' }}>{article.readTime} דקות קריאה</span>
+                  <span className="text-xs font-semibold" style={{ color: '#C8902E' }}>קראו עוד ←</span>
+                </div>
+              </Link>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        <AnimatedSection direction="up" delay={0.3}>
+          <div className="mt-8 text-center">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl transition-all duration-200"
+              style={{ border: '1.5px solid rgba(200,144,46,0.35)', color: '#e5a83e' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,144,46,0.10)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+            >
+              לכל המאמרים
+              <ArrowLeft size={15} />
+            </Link>
+          </div>
+        </AnimatedSection>
       </section>
 
       {/* ══════════════════════════════════════
