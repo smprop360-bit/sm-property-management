@@ -30,5 +30,12 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "__tests__"]
+  "exclude": [
+    "node_modules",
+    "__tests__",
+    ".history-rewrite-temp",
+    "motion-preview",
+    "S&M Property Management - backup 2026-10-18",
+    "S&M Property Management - complete backup 2026-10-18"
+  ]
 }
