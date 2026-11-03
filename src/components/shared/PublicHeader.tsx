@@ -78,7 +78,7 @@ export default function PublicHeader() {
           {/* Logo */}
           <Link href="/" className="shrink-0 flex items-center gap-3">
             <Image
-              src="/sm-logo.png"
+              src="/logo.png"
               alt="S&M Property Management"
               width={48}
               height={48}

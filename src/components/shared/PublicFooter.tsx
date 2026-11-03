@@ -25,7 +25,7 @@ export default function PublicFooter() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-5">
               <Image
-                src="/sm-logo.png"
+                src="/logo.png"
                 alt="S&M Property Management"
                 width={72}
                 height={72}

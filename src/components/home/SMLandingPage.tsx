@@ -171,7 +171,7 @@ export default function SMLandingPage() {
 
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <Image src="/sm-logo.png" alt="" width={480} height={480} priority aria-hidden
+          <Image src="/logo.png" alt="" width={480} height={480} priority aria-hidden
             style={{ borderRadius: '50%', opacity: 0.06, filter: 'blur(2px)' }} />
         </div>
 
@@ -184,7 +184,7 @@ export default function SMLandingPage() {
             className="mb-8"
           >
             <Image
-              src="/sm-logo.png"
+              src="/logo.png"
               alt="S&M Property Management"
               width={80}
               height={80}
@@ -310,7 +310,7 @@ export default function SMLandingPage() {
 
             {/* S&M badge */}
             <div style={{ ...glassCard, marginTop: 10, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10, borderColor: 'rgba(200,144,46,0.3)' }}>
-              <Image src="/sm-logo.png" alt="S&M" width={32} height={32} style={{ borderRadius: '50%', flexShrink: 0 }} />
+              <Image src="/logo.png" alt="S&M" width={32} height={32} style={{ borderRadius: '50%', flexShrink: 0 }} />
               <div>
                 <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem' }}>S&M מנהלת את הנכס שלכם</p>
                 <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.72rem' }}>prop360.co.il</p>
@@ -429,7 +429,7 @@ export default function SMLandingPage() {
         <AnimatedSection direction="up">
           <div className="flex items-center gap-4 mb-3">
             <Image
-              src="/sm-logo.png"
+              src="/logo.png"
               alt="S&M"
               width={44}
               height={44}
@@ -583,7 +583,7 @@ export default function SMLandingPage() {
 
             <div className="shrink-0 relative z-10">
               <Image
-                src="/sm-logo.png"
+                src="/logo.png"
                 alt="S&M Property Management"
                 width={72}
                 height={72}
@@ -638,7 +638,7 @@ export default function SMLandingPage() {
         <AnimatedSection direction="up">
           <div className="flex items-center gap-4 mb-3">
             <Image
-              src="/sm-logo.png"
+              src="/logo.png"
               alt="S&M"
               width={44}
               height={44}
