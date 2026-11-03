@@ -49,10 +49,10 @@ const goldText: React.CSSProperties = {
 const services = [
   { icon: Building2, title: 'ניהול נכסים למגורים', body: 'טיפול שוטף — שוכרים, חוזים, תחזוקה ודוחות חודשיים מפורטים.', href: '/property-management', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&q=80' },
   { icon: Briefcase, title: 'ניהול נכסים מסחריים', body: 'ניהול משרדים, חנויות ונכסים מניבים עם חשיבה עסקית.', href: '/commercial-property-management', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80' },
-  { icon: TrendingUp, title: 'השכרה ואיתור שוכרים', body: 'שיווק הנכס, בדיקת שוכרים וליווי כל תהליך ההשכרה.', href: '/services', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80' },
+  { icon: TrendingUp, title: 'השכרה ואיתור שוכרים', body: 'שיווק הנכס, בדיקת שוכרים וליווי כל תהליך ההשכרה.', href: '/property-management', img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80' },
   { icon: Handshake, title: 'ליווי בעלי נכסים', body: 'ייעוץ, ליווי אישי ושותפות לבעלי נכסים ומשקיעים.', href: '/investors', img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80' },
-  { icon: Wrench, title: 'תחזוקה וטיפול בתקלות', body: 'רשת ספקים מקצועית. תיקונים, שיפוצים וטיפול בכל בקשה.', href: '/services', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80' },
-  { icon: Eye, title: 'שקיפות ודיווח', body: 'דוחות חודשיים ברורים וגישה מלאה למידע בכל רגע.', href: '/services', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
+  { icon: Wrench, title: 'תחזוקה וטיפול בתקלות', body: 'רשת ספקים מקצועית. תיקונים, שיפוצים וטיפול בכל בקשה.', href: '/property-management', img: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80' },
+  { icon: Eye, title: 'שקיפות ודיווח', body: 'דוחות חודשיים ברורים וגישה מלאה למידע בכל רגע.', href: '/property-management', img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80' },
 ];
 
 const stats = [
@@ -236,7 +236,7 @@ export default function SMLandingPage() {
               <ArrowLeft size={18} />
             </Link>
             <Link
-              href="/services"
+              href="#services"
               className="inline-flex items-center justify-center gap-3 font-semibold text-lg px-8 py-4 rounded-lg transition-all duration-200"
               style={{ border: '1.5px solid rgba(255,255,255,0.4)', color: '#fff' }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = '#C8902E'; e.currentTarget.style.background = 'rgba(200,144,46,0.10)'; }}
@@ -323,7 +323,7 @@ export default function SMLandingPage() {
       {/* ══════════════════════════════════════
           SERVICES
       ══════════════════════════════════════ */}
-      <section className="py-20 overflow-hidden" style={{ background: '#0D1F38', padding: '5rem 8%' }}>
+      <section id="services" className="py-20 overflow-hidden scroll-mt-28" style={{ background: '#0D1F38', padding: '5rem 8%' }}>
         <AnimatedSection direction="up">
           <SectionLabel>השירותים שלנו</SectionLabel>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
