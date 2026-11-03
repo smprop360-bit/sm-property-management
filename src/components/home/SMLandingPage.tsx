@@ -177,22 +177,6 @@ export default function SMLandingPage() {
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="flex-1 max-w-xl">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <Image
-              src="/logo.png"
-              alt="S&M Property Management"
-              width={80}
-              height={80}
-              priority
-              style={{ borderRadius: '50%', filter: 'drop-shadow(0 0 20px rgba(200,144,46,0.6))' }}
-            />
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
