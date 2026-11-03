@@ -89,18 +89,6 @@ export default function PublicFooter() {
                   WhatsApp
                 </a>
               </li>
-              <li>
-                <Link
-                  href="/property-360"
-                  className="text-white text-sm font-semibold px-4 py-2 rounded-lg transition-all inline-block mt-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #C8902E, #D9AE55)',
-                    boxShadow: '0 4px 14px rgba(200,144,46,0.3)',
-                  }}
-                >
-                  בדיקת הנכס שלי
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
