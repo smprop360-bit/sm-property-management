@@ -172,7 +172,7 @@ export default function SMLandingPage() {
         {/* Watermark */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <Image src="/logo.png" alt="" width={480} height={480} priority aria-hidden
-            style={{ borderRadius: '50%', opacity: 0.06, filter: 'blur(2px)' }} />
+            style={{ borderRadius: '50%', opacity: 0.16 }} />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-8">
