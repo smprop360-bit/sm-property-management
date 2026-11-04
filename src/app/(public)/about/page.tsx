@@ -174,7 +174,16 @@ export default function AboutPage() {
                     ש
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-2xl">שלומי לימור</h3>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h3 className="font-bold text-white text-2xl">שלומי לימור</h3>
+                      <a
+                        href="tel:+972559522746"
+                        dir="ltr"
+                        className="text-sm font-medium text-white/70 hover:text-[#C8902E] transition-colors"
+                      >
+                        055-952-2746
+                      </a>
+                    </div>
                     <p className="text-[#C8902E] font-semibold text-sm tracking-wide mt-1">שותף מייסד</p>
                   </div>
                 </div>
