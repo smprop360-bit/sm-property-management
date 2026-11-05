@@ -23,6 +23,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/ui/AnimatedSection';
 import AnimatedCounter from '@/components/ui/AnimatedCounter';
+import { WhatsAppIcon } from '@/components/shared/PublicHeader';
 import { LeadForm } from '@/components/forms/LeadForm';
 import { getLatestArticles } from '@/lib/blog';
 
@@ -806,10 +807,11 @@ export default function SMLandingPage() {
 
             <ul className="space-y-5 mb-10">
               {[
-                { icon: Phone, label: 'שלומי לימור', value: '055-260-1077', href: 'tel:+972552601077' },
-                { icon: Phone, label: 'מוטי גינדי', value: '052-577-6892', href: 'tel:+972525776892' },
-                { icon: Mail, label: 'אימייל', value: 'info@prop360.co.il', href: 'mailto:info@prop360.co.il' },
-                { icon: MapPin, label: 'כתובת', value: 'תל אביב, ישראל', href: null },
+                { icon: Phone, label: 'משרד', value: '055-260-1077', href: 'tel:+972552601077', wa: 'https://wa.me/972552601077' },
+                { icon: Phone, label: 'שלומי לימור', value: '055-952-2746', href: 'tel:+972559522746', wa: 'https://wa.me/972559522746' },
+                { icon: Phone, label: 'מוטי גינדי', value: '052-577-6892', href: 'tel:+972525776892', wa: 'https://wa.me/972525776892' },
+                { icon: Mail, label: 'אימייל', value: 'info@prop360.co.il', href: 'mailto:info@prop360.co.il', wa: null },
+                { icon: MapPin, label: 'כתובת', value: 'תל אביב, ישראל', href: null, wa: null },
               ].map(item => {
                 const Icon = item.icon;
                 return (
@@ -820,11 +822,24 @@ export default function SMLandingPage() {
                     </div>
                     <div>
                       <p className="text-xs mb-0.5" style={{ color: 'rgba(255,255,255,0.40)' }}>{item.label}</p>
-                      {item.href ? (
-                        <a href={item.href} className="font-semibold text-white hover:text-gold transition-colors">{item.value}</a>
-                      ) : (
-                        <p className="font-semibold text-white">{item.value}</p>
-                      )}
+                      <div className="flex items-center gap-3">
+                        {item.href ? (
+                          <a href={item.href} className="font-semibold text-white hover:text-gold transition-colors">{item.value}</a>
+                        ) : (
+                          <p className="font-semibold text-white">{item.value}</p>
+                        )}
+                        {item.wa && (
+                          <a
+                            href={item.wa}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`שליחת הודעת WhatsApp ל${item.label}`}
+                            className="inline-flex items-center justify-center min-h-11 min-w-11 -my-3 transition-transform hover:scale-110"
+                          >
+                            <WhatsAppIcon size={22} />
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </li>
                 );
