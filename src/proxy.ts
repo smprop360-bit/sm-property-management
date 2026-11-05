@@ -1,30 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { isLocale } from '@/i18n/config'
 
 export function proxy(request: NextRequest) {
-  const host = request.headers.get('host') ?? ''
-  const hostname = host.split(':')[0]
-  const parts = hostname.split('.')
+  const { pathname } = request.nextUrl
+  const first = pathname.split('/')[1]
+  const url = request.nextUrl.clone()
 
-  // Skip plain localhost, the current two-part domain, or IPv4
-  if (parts.length <= 2 || /^\d+\.\d+\.\d+\.\d+$/.test(hostname)) {
-    return NextResponse.next()
+  if (first === 'admin') return NextResponse.next()
+
+  // Hebrew lives on the unprefixed URLs, so /he/* would only duplicate them.
+  if (first === 'he') {
+    url.pathname = pathname.slice(3) || '/'
+    return NextResponse.redirect(url, 308)
   }
+  if (isLocale(first)) return NextResponse.next()
 
-  const subdomain = parts[0]
-
-  if (subdomain === 'www' || subdomain === 'admin') {
-    return NextResponse.next()
-  }
-
-  // Only rewrite if subdomain looks like a valid slug
-  if (!/^[a-z0-9-]+$/i.test(subdomain)) {
-    return NextResponse.next()
-  }
-
-  // Subdomain routing disabled - property pages removed
-  return NextResponse.next()
+  url.pathname = `/he${pathname}`
+  return NextResponse.rewrite(url)
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|api/).*)'],
+  matcher: ['/((?!_next/|api/|.*\\.[^/]+$).*)'],
 }

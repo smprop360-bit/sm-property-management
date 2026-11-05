@@ -9,6 +9,7 @@ import Step4Status from './steps/Step4Status';
 import Step5Income from './steps/Step5Income';
 import Step6Interest from './steps/Step6Interest';
 import Step7Contact from './steps/Step7Contact';
+import { useLang, useT } from '@/i18n/client';
 
 const TOTAL_STEPS = 7;
 const STEP_LABELS = ['סוג נכס', 'מיקום', 'פרטים', 'מצב', 'שכירות', 'עניין', 'קשר'];
@@ -33,6 +34,8 @@ const initialData: Property360Data = {
 };
 
 export default function WizardShell() {
+  const t = useT();
+  const lang = useLang();
   const [step, setStep] = useState(1);
   const [data, setData] = useState<Property360Data>(initialData);
   const [loading, setLoading] = useState(false);
@@ -48,9 +51,9 @@ export default function WizardShell() {
     setLoading(true);
     setError(null);
     try {
-      await submitProperty360(data);
+      await submitProperty360(data, lang);
     } catch (e: unknown) {
-      setError(e instanceof Error ? e.message : 'שגיאה בשמירת הפרטים');
+      setError(t(e instanceof Error ? e.message : t('שגיאה בשמירת הפרטים. נסו שוב.')));
       setLoading(false);
     }
   };
@@ -63,17 +66,17 @@ export default function WizardShell() {
         <div className="mb-4 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-semibold tracking-[0.12em] text-[#b5853f]">PROPERTY360</p>
-            <p className="mt-1 font-heading text-xl text-navy">{STEP_LABELS[step - 1]}</p>
+            <p className="mt-1 font-heading text-xl text-navy">{t(STEP_LABELS[step - 1])}</p>
           </div>
-          <div className="text-left text-xs text-brand-muted">
-            <span className="block">שלב {step} מתוך {TOTAL_STEPS}</span>
+          <div className="text-end text-xs text-brand-muted">
+            <span className="block">{t('שלב')} {step} {t('מתוך')} {TOTAL_STEPS}</span>
             <span className="mt-1 block">{Math.round((step / TOTAL_STEPS) * 100)}%</span>
           </div>
         </div>
         <div
           className="h-1.5 overflow-hidden bg-[#ece7de]"
           role="progressbar"
-          aria-label="התקדמות בדיקת הנכס"
+          aria-label={t('התקדמות בדיקת הנכס')}
           aria-valuemin={1}
           aria-valuemax={TOTAL_STEPS}
           aria-valuenow={step}

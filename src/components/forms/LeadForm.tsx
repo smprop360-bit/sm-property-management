@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import type { LeadType } from '@/lib/types/lead'
+import { useT } from '@/i18n/client'
 
 interface LeadFormProps {
   leadType: LeadType
@@ -14,6 +15,7 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
+  const t = useT()
   const { values, errors, loading, submitError, handleChange, handleSubmit } = useLeadForm({
     leadType,
     propertyId,
@@ -23,13 +25,13 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
     <form onSubmit={handleSubmit} className={className} noValidate>
       <div className="space-y-4">
         <div className="space-y-1.5">
-          <Label htmlFor="full_name">שם מלא *</Label>
+          <Label htmlFor="full_name">{t('שם מלא *')}</Label>
           <Input
             id="full_name"
             name="full_name"
             value={values.full_name}
             onChange={handleChange}
-            placeholder="ישראל ישראלי"
+            placeholder={t('ישראל ישראלי')}
             aria-invalid={Boolean(errors.full_name)}
             aria-describedby={errors.full_name ? 'full_name-error' : undefined}
           />
@@ -39,7 +41,7 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="phone">טלפון *</Label>
+          <Label htmlFor="phone">{t('טלפון *')}</Label>
           <Input
             id="phone"
             name="phone"
@@ -56,7 +58,7 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="email">אימייל</Label>
+          <Label htmlFor="email">{t('אימייל')}</Label>
           <Input
             id="email"
             name="email"
@@ -69,17 +71,17 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
 
         <div className="grid grid-cols-2 gap-3">
           <div className="space-y-1.5">
-            <Label htmlFor="city">עיר</Label>
+            <Label htmlFor="city">{t('עיר')}</Label>
             <Input
               id="city"
               name="city"
               value={values.city}
               onChange={handleChange}
-              placeholder="תל אביב"
+              placeholder={t('תל אביב')}
             />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="property_type">סוג הנכס</Label>
+            <Label htmlFor="property_type">{t('סוג הנכס')}</Label>
             <select
               id="property_type"
               name="property_type"
@@ -87,25 +89,25 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
               onChange={handleChange as React.ChangeEventHandler<HTMLSelectElement>}
               className="w-full border border-input bg-transparent px-3 py-1 text-sm rounded-md h-8 focus:outline-none focus:ring-2 focus:ring-ring [&>option]:bg-white [&>option]:text-gray-900"
             >
-              <option value="">בחרו סוג</option>
-              <option value="דירה">דירה</option>
-              <option value="בית פרטי">בית פרטי</option>
-              <option value="משרד">משרד</option>
-              <option value="חנות">חנות</option>
-              <option value="מחסן">מחסן</option>
-              <option value="אחר">אחר</option>
+              <option value="">{t('בחרו סוג')}</option>
+              <option value="דירה">{t('דירה')}</option>
+              <option value="בית פרטי">{t('בית פרטי')}</option>
+              <option value="משרד">{t('משרד')}</option>
+              <option value="חנות">{t('חנות')}</option>
+              <option value="מחסן">{t('מחסן')}</option>
+              <option value="אחר">{t('אחר')}</option>
             </select>
           </div>
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="message">הודעה</Label>
+          <Label htmlFor="message">{t('הודעה')}</Label>
           <Textarea
             id="message"
             name="message"
             value={values.message}
             onChange={handleChange}
-            placeholder="ספר לנו על הנכס / מה אתה מחפש..."
+            placeholder={t('ספר לנו על הנכס / מה אתה מחפש...')}
             rows={3}
           />
         </div>
@@ -115,7 +117,7 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
           disabled={loading}
           className="w-full bg-brand-gold hover:bg-brand-gold/90 text-white font-semibold py-3 rounded-none"
         >
-          {loading ? 'שולח...' : 'שלח פנייה'}
+          {loading ? t('שולח...') : t('שלח פנייה')}
         </Button>
         {submitError && (
           <p className="text-red-600 text-sm text-center" role="alert" aria-live="polite">{submitError}</p>

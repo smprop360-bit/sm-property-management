@@ -1,4 +1,5 @@
 import type { Property360Data } from '@/app/actions/property360';
+import { useT } from '@/i18n/client';
 
 type Props = {
   data: Property360Data;
@@ -10,24 +11,25 @@ type Props = {
 const types = ['דירה', 'בית', 'משרד', 'חנות', 'מחסן', 'נכס מסחרי אחר'];
 
 export default function Step1PropertyType({ data, update, next }: Props) {
+  const t = useT();
   return (
     <div>
-      <h2 className="font-heading text-2xl font-bold text-navy mb-2">איזה נכס יש לך?</h2>
-      <p className="text-brand-muted mb-8">בחרו את סוג הנכס</p>
+      <h2 className="font-heading text-2xl font-bold text-navy mb-2">{t('איזה נכס יש לך?')}</h2>
+      <p className="text-brand-muted mb-8">{t('בחרו את סוג הנכס')}</p>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-        {types.map((t) => (
+        {types.map((type) => (
           <button
-            key={t}
-            onClick={() => update({ property_type: t })}
+            key={type}
+            onClick={() => update({ property_type: type })}
             type="button"
-            aria-pressed={data.property_type === t}
+            aria-pressed={data.property_type === type}
             className={`min-h-14 border-2 py-4 px-3 text-center font-medium transition-all ${
-              data.property_type === t
+              data.property_type === type
                 ? 'border-gold bg-gold/5 text-navy'
                 : 'border-gray-200 text-brand-muted hover:border-gold/50'
             }`}
           >
-            {t}
+            {t(type)}
           </button>
         ))}
       </div>
@@ -36,7 +38,7 @@ export default function Step1PropertyType({ data, update, next }: Props) {
         disabled={!data.property_type}
         className="w-full bg-navy disabled:opacity-40 hover:bg-navy-dark text-white font-semibold py-4 rounded-xl transition-colors"
       >
-        המשך
+        {t('המשך')}
       </button>
     </div>
   );

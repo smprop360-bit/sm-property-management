@@ -1,4 +1,5 @@
 import type { Property360Data } from '@/app/actions/property360';
+import { useT } from '@/i18n/client';
 
 type Props = {
   data: Property360Data;
@@ -20,14 +21,15 @@ const booleanFields = [
 ];
 
 export default function Step3Details({ data, update, next, back }: Props) {
+  const t = useT();
   return (
     <div>
-      <h2 className="font-heading text-2xl font-bold text-navy mb-2">פרטי הנכס</h2>
-      <p className="text-brand-muted mb-8">מידע על הנכס</p>
+      <h2 className="font-heading text-2xl font-bold text-navy mb-2">{t('פרטי הנכס')}</h2>
+      <p className="text-brand-muted mb-8">{t('מידע על הנכס')}</p>
       <div className="grid grid-cols-2 gap-4 mb-6">
         {numericFields.map(({ key, label, placeholder }) => (
           <div key={key}>
-            <label className="block text-sm font-medium text-navy mb-1">{label}</label>
+            <label className="block text-sm font-medium text-navy mb-1">{t(label)}</label>
             <input
               type="number"
               value={data[key]}
@@ -47,13 +49,13 @@ export default function Step3Details({ data, update, next, back }: Props) {
               onChange={(e) => update({ [key]: e.target.checked })}
               className="w-4 h-4 accent-gold"
             />
-            <span className="text-sm text-brand-text">{label}</span>
+            <span className="text-sm text-brand-text">{t(label)}</span>
           </label>
         ))}
       </div>
       <div className="flex gap-4">
-        <button onClick={back} className="flex-1 border border-gray-200 text-brand-muted py-4 rounded-xl hover:border-navy transition-colors">חזרה</button>
-        <button onClick={next} className="flex-1 bg-navy hover:bg-navy-dark text-white font-semibold py-4 rounded-xl transition-colors">המשך</button>
+        <button onClick={back} className="flex-1 border border-gray-200 text-brand-muted py-4 rounded-xl hover:border-navy transition-colors">{t('חזרה')}</button>
+        <button onClick={next} className="flex-1 bg-navy hover:bg-navy-dark text-white font-semibold py-4 rounded-xl transition-colors">{t('המשך')}</button>
       </div>
     </div>
   );

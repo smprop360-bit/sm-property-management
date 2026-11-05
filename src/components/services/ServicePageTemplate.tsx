@@ -1,4 +1,7 @@
-import Link from 'next/link'
+'use client'
+
+import Link from '@/i18n/Link'
+import { useT } from '@/i18n/client'
 import { ArrowLeft, Check } from 'lucide-react'
 
 type Props = {
@@ -34,6 +37,7 @@ export default function ServicePageTemplate({
   ctaLabel = 'בדיקת הנכס שלי',
   ctaHref = '/property-360',
 }: Props) {
+  const t = useT()
   return (
     <div style={{ background: '#091524', color: '#fff' }}>
 
@@ -54,10 +58,10 @@ export default function ServicePageTemplate({
           }}
         />
         <div className="mx-auto max-w-7xl relative z-10">
-          <p className="text-sm font-bold tracking-[0.18em] text-[#C8902E] mb-5">{badge}</p>
+          <p className="text-sm font-bold tracking-[0.18em] text-[#C8902E] mb-5">{t(badge)}</p>
           <div className="mt-2 grid gap-10 lg:grid-cols-[1.15fr_.85fr] lg:items-end lg:gap-24">
-            <h1 className="font-heading text-5xl font-bold leading-[1.08] sm:text-6xl">{title}</h1>
-            <p className="max-w-lg text-xl leading-8 text-white/65">{subtitle}</p>
+            <h1 className="font-heading text-5xl font-bold leading-[1.08] sm:text-6xl">{t(title)}</h1>
+            <p className="max-w-lg text-xl leading-8 text-white/65">{t(subtitle)}</p>
           </div>
         </div>
       </section>
@@ -68,8 +72,8 @@ export default function ServicePageTemplate({
           <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:gap-24">
 
             <div>
-              <p className="text-sm font-bold tracking-[0.15em] text-[#C8902E] mb-4">הגישה שלנו</p>
-              <p className="max-w-md text-lg leading-8 text-white/60">{body}</p>
+              <p className="text-sm font-bold tracking-[0.15em] text-[#C8902E] mb-4">{t('הגישה שלנו')}</p>
+              <p className="max-w-md text-lg leading-8 text-white/60">{t(body)}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <Link
                   href={ctaHref}
@@ -80,7 +84,7 @@ export default function ServicePageTemplate({
                     boxShadow: '0 6px 20px rgba(200,144,46,0.3)',
                   }}
                 >
-                  {ctaLabel} <ArrowLeft size={18} aria-hidden="true" />
+                  {t(ctaLabel)} <ArrowLeft size={18} aria-hidden="true" />
                 </Link>
                 <Link
                   href="/contact"
@@ -91,7 +95,7 @@ export default function ServicePageTemplate({
                     borderRadius: '8px',
                   }}
                 >
-                  דברו איתנו <ArrowLeft size={18} aria-hidden="true" />
+                  {t('דברו איתנו')} <ArrowLeft size={18} aria-hidden="true" />
                 </Link>
               </div>
             </div>
@@ -101,7 +105,7 @@ export default function ServicePageTemplate({
                 className="mb-5 flex items-center justify-between pb-4"
                 style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}
               >
-                <h2 className="font-heading text-3xl">מה כולל השירות</h2>
+                <h2 className="font-heading text-3xl">{t('מה כולל השירות')}</h2>
                 <span className="text-sm font-bold" style={{ color: '#ffffff' }}>S&amp;M</span>
               </div>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -117,7 +121,7 @@ export default function ServicePageTemplate({
                     >
                       <Check size={16} aria-hidden="true" />
                     </span>
-                    <span className="pt-1 leading-6 text-white/70">{feature}</span>
+                    <span className="pt-1 leading-6 text-white/70">{t(feature)}</span>
                   </div>
                 ))}
               </div>
@@ -132,7 +136,7 @@ export default function ServicePageTemplate({
         <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 px-6 py-14 sm:flex-row sm:items-center lg:px-10">
           <div>
             <p className="text-sm font-bold tracking-[0.15em] text-[#C8902E] mb-2">PROPERTY360</p>
-            <h2 className="font-heading text-3xl">מתחילים מ<span style={goldGradient}>תמונה ברורה.</span></h2>
+            <h2 className="font-heading text-3xl">{t('מתחילים מ')}<span style={goldGradient}>{t('תמונה ברורה.')}</span></h2>
           </div>
           <Link
             href="/property-360"
@@ -143,7 +147,7 @@ export default function ServicePageTemplate({
               boxShadow: '0 6px 20px rgba(200,144,46,0.3)',
             }}
           >
-            בדיקת הנכס שלי <ArrowLeft size={18} aria-hidden="true" />
+            {t('בדיקת הנכס שלי')} <ArrowLeft size={18} aria-hidden="true" />
           </Link>
         </div>
       </section>

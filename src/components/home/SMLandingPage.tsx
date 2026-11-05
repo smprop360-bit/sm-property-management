@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/i18n/Link';
 import Image from 'next/image';
 import {
   ArrowLeft,
@@ -26,6 +26,7 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter';
 import { WhatsAppIcon } from '@/components/shared/PublicHeader';
 import { LeadForm } from '@/components/forms/LeadForm';
 import { getLatestArticles } from '@/lib/blog';
+import { useT } from '@/i18n/client';
 
 /* ─── Glass card helper ─── */
 const glassCard: React.CSSProperties = {
@@ -114,6 +115,7 @@ function GoldDivider() {
    MAIN COMPONENT
 ───────────────────────────────────────────── */
 export default function SMLandingPage() {
+  const t = useT();
   const servicesRef = useRef(null);
   const servicesInView = useInView(servicesRef, { once: true, margin: '-60px' });
   const stepsRef = useRef(null);
@@ -185,9 +187,9 @@ export default function SMLandingPage() {
             className="font-heading font-black leading-[1.22] mb-5"
             style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)' }}
           >
-            הנכס שלכם.{' '}
+            {t('הנכס שלכם.')}{' '}
             <br />
-            <span style={goldText}>תנו לנו לדאוג לשקט שלכם.</span>
+            <span style={goldText}>{t('תנו לנו לדאוג לשקט שלכם.')}</span>
           </motion.h1>
 
           <motion.p
@@ -197,7 +199,7 @@ export default function SMLandingPage() {
             className="text-lg leading-relaxed mb-10 max-w-lg"
             style={{ color: 'rgba(255,255,255,0.80)' }}
           >
-            ניהול מקצועי ואישי של נכסים למגורים ולמסחר. אנחנו דואגים לנכס, לשוכרים ולכל הפרטים הקטנים — כדי שתוכלו ליהנות מההשקעה בראש שקט.
+            {t('ניהול מקצועי ואישי של נכסים למגורים ולמסחר. אנחנו דואגים לנכס, לשוכרים ולכל הפרטים הקטנים — כדי שתוכלו ליהנות מההשקעה בראש שקט.')}
           </motion.p>
 
           <motion.div
@@ -217,7 +219,7 @@ export default function SMLandingPage() {
               onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 8px 32px rgba(200,144,46,0.55)')}
               onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 4px 24px rgba(200,144,46,0.40)')}
             >
-              קבלו הצעה לניהול הנכס
+              {t('קבלו הצעה לניהול הנכס')}
               <ArrowLeft size={18} />
             </Link>
             <Link
@@ -227,7 +229,7 @@ export default function SMLandingPage() {
               onMouseEnter={e => { e.currentTarget.style.borderColor = '#C8902E'; e.currentTarget.style.background = 'rgba(200,144,46,0.10)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'; e.currentTarget.style.background = 'transparent'; }}
             >
-              הכירו את השירותים שלנו
+              {t('הכירו את השירותים שלנו')}
               <ArrowLeft size={16} style={{ color: '#C8902E' }} />
             </Link>
           </motion.div>
@@ -252,29 +254,29 @@ export default function SMLandingPage() {
                 }}
               >
                 <span style={{
-                  position: 'absolute', top: 12, right: 12,
+                  position: 'absolute', top: 12, insetInlineStart: 12,
                   background: 'rgba(16,180,90,0.18)', border: '1px solid rgba(16,180,90,0.45)',
                   color: '#4ddb8f', borderRadius: 20, padding: '3px 10px',
                   fontSize: '0.72rem', fontWeight: 700,
-                }}>מושכר ✓</span>
+                }}>{t('מושכר ✓')}</span>
                 <span style={{
-                  position: 'absolute', bottom: 12, right: 12,
+                  position: 'absolute', bottom: 12, insetInlineStart: 12,
                   background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)',
                   color: '#fff', borderRadius: 8, padding: '3px 10px',
                   fontSize: '0.75rem', fontWeight: 600, border: '1px solid rgba(255,255,255,0.12)',
-                }}>📍 תל אביב</span>
+                }}>{t('📍 תל אביב')}</span>
               </div>
               <div style={{ padding: '14px 18px' }}>
-                <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '0.73rem', marginBottom: 3 }}>ניהול נכסים | דירה 4 חדרות</p>
-                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem' }}>רחוב דיזנגוף, תל אביב</p>
+                <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '0.73rem', marginBottom: 3 }}>{t('ניהול נכסים | דירה 4 חדרות')}</p>
+                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem' }}>{t('רחוב דיזנגוף, תל אביב')}</p>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', borderTop: '1px solid rgba(255,255,255,0.07)', padding: '12px 18px' }}>
                 <div>
-                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>תשואה שנתית</p>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>{t('תשואה שנתית')}</p>
                   <p style={{ fontWeight: 800, ...goldText, fontSize: '1.15rem' }}>6.8%</p>
                 </div>
                 <div>
-                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>שכר דירה</p>
+                  <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.38)' }}>{t('שכר דירה')}</p>
                   <p style={{ fontWeight: 800, color: '#fff', fontSize: '1.15rem' }}>₪7,200</p>
                 </div>
               </div>
@@ -283,8 +285,8 @@ export default function SMLandingPage() {
             {/* Stat chips */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 10 }}>
               {([
-                { label: 'נכסים מנוהלים', value: '500+', gold: true },
-                { label: 'שיעור תפוסה', value: '97%', gold: false },
+                { label: t('נכסים מנוהלים'), value: '500+', gold: true },
+                { label: t('שיעור תפוסה'), value: '97%', gold: false },
               ] as { label: string; value: string; gold: boolean }[]).map(stat => (
                 <div key={stat.label} style={{ ...glassCard, padding: '12px 16px', borderColor: 'rgba(200,144,46,0.2)' }}>
                   <p style={{ fontSize: '0.68rem', color: 'rgba(255,255,255,0.38)', marginBottom: 3 }}>{stat.label}</p>
@@ -297,7 +299,7 @@ export default function SMLandingPage() {
             <div style={{ ...glassCard, marginTop: 10, padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 10, borderColor: 'rgba(200,144,46,0.3)' }}>
               <Image src="/logo.png" alt="S&M" width={32} height={32} style={{ borderRadius: '50%', flexShrink: 0 }} />
               <div>
-                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem' }}>S&M מנהלת את הנכס שלכם</p>
+                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem' }}>{t('S&M מנהלת את הנכס שלכם')}</p>
                 <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.72rem' }}>prop360.co.il</p>
               </div>
             </div>
@@ -310,12 +312,12 @@ export default function SMLandingPage() {
       ══════════════════════════════════════ */}
       <section id="services" className="py-20 overflow-hidden scroll-mt-28" style={{ background: '#0D1F38', padding: '5rem 8%' }}>
         <AnimatedSection direction="up">
-          <SectionLabel>השירותים שלנו</SectionLabel>
+          <SectionLabel>{t('השירותים שלנו')}</SectionLabel>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-            הנכס שלכם. הניהול שלנו.
+            {t('הנכס שלכם. הניהול שלנו.')}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: '1.05rem', maxWidth: '520px', marginTop: '0.75rem' }}>
-            מגורים, מסחר, השכרה ותחזוקה — מעטפת שירות מלאה לבעלי נכסים ומשקיעים.
+            {t('מגורים, מסחר, השכרה ותחזוקה — מעטפת שירות מלאה לבעלי נכסים ומשקיעים.')}
           </p>
           <GoldDivider />
         </AnimatedSection>
@@ -325,7 +327,7 @@ export default function SMLandingPage() {
             const Icon = s.icon;
             return (
               <motion.div
-                key={s.title}
+                key={t(s.title)}
                 initial={{ opacity: 0, y: 24 }}
                 animate={servicesInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
@@ -344,10 +346,10 @@ export default function SMLandingPage() {
                       style={{ background: 'rgba(200,144,46,0.18)', width: 44, height: 44 }}>
                       <Icon size={19} style={{ color: '#C8902E' }} />
                     </div>
-                    <h3 className="font-bold text-white mb-2" style={{ fontSize: '1rem' }}>{s.title}</h3>
-                    <p className="leading-relaxed" style={{ fontSize: '.85rem', color: 'rgba(255,255,255,0.60)' }}>{s.body}</p>
+                    <h3 className="font-bold text-white mb-2" style={{ fontSize: '1rem' }}>{t(s.title)}</h3>
+                    <p className="leading-relaxed" style={{ fontSize: '.85rem', color: 'rgba(255,255,255,0.60)' }}>{t(s.body)}</p>
                     <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold" style={{ color: '#C8902E' }}>
-                      קראו עוד <ArrowLeft size={12} />
+                      {t('קראו עוד')} <ArrowLeft size={12} />
                     </span>
                   </div>
                 </Link>
@@ -368,14 +370,14 @@ export default function SMLandingPage() {
           padding: '5rem 8%',
         }}
       >
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x divide-x-reverse" style={{ '--tw-divide-opacity': '0.1' } as React.CSSProperties}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 divide-x rtl:divide-x-reverse" style={{ '--tw-divide-opacity': '0.1' } as React.CSSProperties}>
           {stats.map((s, i) => (
             <AnimatedSection key={s.label} delay={i * 0.1} direction="up">
               <div className="text-center py-8 px-4">
                 <p className="font-black leading-none mb-2" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', ...goldText }}>
                   <AnimatedCounter value={s.value} suffix={s.suffix} duration={1.8} />
                 </p>
-                <p style={{ fontSize: '.92rem', color: 'rgba(255,255,255,0.60)', fontWeight: 500 }}>{s.label}</p>
+                <p style={{ fontSize: '.92rem', color: 'rgba(255,255,255,0.60)', fontWeight: 500 }}>{t(s.label)}</p>
               </div>
             </AnimatedSection>
           ))}
@@ -390,10 +392,10 @@ export default function SMLandingPage() {
         <AnimatedSection direction="up">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 max-w-7xl mx-auto">
             <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', flexShrink: 0 }}>
-              אזורי פעילות
+              {t('אזורי פעילות')}
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['תל אביב', 'רמת גן', 'הרצליה', 'נתניה', 'פתח תקווה', 'רעננה', 'כפר סבא', 'ראש העין', 'ירושלים', 'חיפה'].map(city => (
+              {[t('תל אביב'), t('רמת גן'), t('הרצליה'), t('נתניה'), t('פתח תקווה'), t('רעננה'), t('כפר סבא'), t('ראש העין'), t('ירושלים'), t('חיפה')].map(city => (
                 <span
                   key={city}
                   className="text-sm font-medium px-4 py-1.5 rounded-full"
@@ -420,11 +422,11 @@ export default function SMLandingPage() {
               height={44}
               style={{ borderRadius: '50%', filter: 'drop-shadow(0 0 12px rgba(200,144,46,0.45))' }}
             />
-            <SectionLabel>למה S&amp;M</SectionLabel>
+            <SectionLabel>{t('למה S&M')}</SectionLabel>
           </div>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-            לא רק מנהלים את הנכס.{' '}
-            <span style={goldText}>מנהלים את ההשקעה.</span>
+            {t('לא רק מנהלים את הנכס.')}{' '}
+            <span style={goldText}>{t('מנהלים את ההשקעה.')}</span>
           </h2>
           <GoldDivider />
         </AnimatedSection>
@@ -432,7 +434,7 @@ export default function SMLandingPage() {
         <div ref={whyRef} className="grid gap-5 mt-2" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
           {whyItems.map((item, i) => (
             <motion.div
-              key={item.title}
+              key={t(item.title)}
               initial={{ opacity: 0, y: 28 }}
               animate={whyInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
@@ -440,7 +442,7 @@ export default function SMLandingPage() {
               <div className="glass-card text-center p-8 h-full" style={glassCard}>
                 <div className="text-3xl mb-4">{item.icon}</div>
                 <h3 className="font-bold text-white mb-2" style={{ fontSize: '1.05rem' }}>{item.title}</h3>
-                <p style={{ fontSize: '.87rem', color: 'rgba(255,255,255,0.60)', lineHeight: 1.6 }}>{item.body}</p>
+                <p style={{ fontSize: '.87rem', color: 'rgba(255,255,255,0.60)', lineHeight: 1.6 }}>{t(item.body)}</p>
               </div>
             </motion.div>
           ))}
@@ -452,9 +454,9 @@ export default function SMLandingPage() {
       ══════════════════════════════════════ */}
       <section style={{ background: '#0D1F38', padding: '5rem 8%' }}>
         <AnimatedSection direction="up">
-          <SectionLabel>התהליך</SectionLabel>
+          <SectionLabel>{t('התהליך')}</SectionLabel>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-            איך זה עובד?
+            {t('איך זה עובד?')}
           </h2>
           <GoldDivider />
         </AnimatedSection>
@@ -480,8 +482,8 @@ export default function SMLandingPage() {
               >
                 {s.n}
               </div>
-              <h3 className="font-bold text-white mb-2">{s.title}</h3>
-              <p style={{ fontSize: '.85rem', color: 'rgba(255,255,255,0.60)', lineHeight: 1.55 }}>{s.body}</p>
+              <h3 className="font-bold text-white mb-2">{t(s.title)}</h3>
+              <p style={{ fontSize: '.85rem', color: 'rgba(255,255,255,0.60)', lineHeight: 1.55 }}>{t(s.body)}</p>
             </motion.div>
           ))}
         </div>
@@ -492,10 +494,10 @@ export default function SMLandingPage() {
       ══════════════════════════════════════ */}
       <section style={{ background: '#091524', padding: '5rem 8%' }}>
         <AnimatedSection direction="up">
-          <SectionLabel>מאמרים ומדריכים</SectionLabel>
+          <SectionLabel>{t('מאמרים ומדריכים')}</SectionLabel>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-            ידע שעושה{' '}
-            <span style={goldText}>הבדל אמיתי.</span>
+            {t('ידע שעושה')}{' '}
+            <span style={goldText}>{t('הבדל אמיתי.')}</span>
           </h2>
           <GoldDivider />
         </AnimatedSection>
@@ -515,17 +517,17 @@ export default function SMLandingPage() {
                   className="text-xs font-bold tracking-widest uppercase px-2.5 py-1 rounded-full mb-4 inline-block"
                   style={{ background: 'rgba(200,144,46,0.14)', color: '#e5a83e' }}
                 >
-                  {article.category}
+                  {t(article.category)}
                 </span>
                 <h3 className="font-bold text-white leading-snug mb-3 line-clamp-2" style={{ fontSize: '1rem' }}>
-                  {article.title}
+                  {t(article.title)}
                 </h3>
                 <p className="text-sm leading-6 line-clamp-2 mb-4" style={{ color: 'rgba(255,255,255,0.52)' }}>
-                  {article.excerpt}
+                  {t(article.excerpt)}
                 </p>
                 <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                  <span className="text-xs" style={{ color: 'rgba(255,255,255,0.32)' }}>{article.readTime} דקות קריאה</span>
-                  <span className="text-xs font-semibold" style={{ color: '#C8902E' }}>קראו עוד ←</span>
+                  <span className="text-xs" style={{ color: 'rgba(255,255,255,0.32)' }}>{article.readTime} {t('דקות קריאה')}</span>
+                  <span className="text-xs font-semibold" style={{ color: '#C8902E' }}>{t('קראו עוד ←')}</span>
                 </div>
               </Link>
             </AnimatedSection>
@@ -541,7 +543,7 @@ export default function SMLandingPage() {
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,144,46,0.10)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
             >
-              לכל המאמרים
+              {t('לכל המאמרים')}
               <ArrowLeft size={15} />
             </Link>
           </div>
@@ -558,7 +560,7 @@ export default function SMLandingPage() {
             style={{
               background: 'rgba(8,39,79,0.35)',
               border: '1px solid rgba(200,144,46,0.25)',
-              borderRight: '4px solid #C8902E',
+              borderInlineStart: '4px solid #C8902E',
             }}
           >
             {/* Glow */}
@@ -585,16 +587,16 @@ export default function SMLandingPage() {
                   color: '#e5a83e',
                 }}
               >
-                בקרוב — PROPERTY 360
+                {t('בקרוב — PROPERTY 360')}
               </div>
               <h2 className="font-heading font-extrabold text-white mb-3" style={{ fontSize: '1.7rem', lineHeight: 1.3 }}>
-                הפורטל הדיגיטלי שישנה את ניהול הנכס שלכם.
+                {t('הפורטל הדיגיטלי שישנה את ניהול הנכס שלכם.')}
               </h2>
               <p className="mb-8" style={{ color: 'rgba(255,255,255,0.60)', fontSize: '.95rem', lineHeight: 1.7, maxWidth: 520 }}>
-                Property360 — דשבורד הכנסות, מסמכים דיגיטליים, מעקב תחזוקה ועדכונים שוטפים — הכל במקום אחד, בזמן אמת.
+                {t('Property360 — דשבורד הכנסות, מסמכים דיגיטליים, מעקב תחזוקה ועדכונים שוטפים — הכל במקום אחד, בזמן אמת.')}
               </p>
               <ul className="space-y-3 mb-8">
-                {['דשבורד הכנסות ודוחות חודשיים', 'מעקב בקשות תחזוקה', 'חוזים ומסמכים דיגיטליים', 'הודעות ועדכונים שוטפים'].map(p => (
+                {[t('דשבורד הכנסות ודוחות חודשיים'), t('מעקב בקשות תחזוקה'), t('חוזים ומסמכים דיגיטליים'), t('הודעות ועדכונים שוטפים')].map(p => (
                   <li key={p} className="flex items-start gap-3">
                     <CheckCircle size={16} style={{ color: '#C8902E', flexShrink: 0, marginTop: 2 }} />
                     <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '.93rem' }}>{p}</span>
@@ -608,7 +610,7 @@ export default function SMLandingPage() {
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(200,144,46,0.10)'; }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
               >
-                קראו עוד על Property360
+                {t('קראו עוד על Property360')}
                 <ArrowLeft size={15} />
               </Link>
             </div>
@@ -629,10 +631,10 @@ export default function SMLandingPage() {
               height={44}
               style={{ borderRadius: '50%', filter: 'drop-shadow(0 0 12px rgba(200,144,46,0.45))' }}
             />
-            <SectionLabel>הצוות שלנו</SectionLabel>
+            <SectionLabel>{t('הצוות שלנו')}</SectionLabel>
           </div>
           <h2 className="font-heading font-extrabold" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28, color: 'rgba(255,255,255,0.7)' }}>
-            הפנים מאחורי{' '}
+            {t('הפנים מאחורי')}{' '}
             <span style={{ color: '#ffffff', fontSize: '1.15em' }}>S&amp;M</span>
           </h2>
           <GoldDivider />
@@ -641,7 +643,7 @@ export default function SMLandingPage() {
         <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
           {team.map((member, i) => (
             <motion.div
-              key={member.name}
+              key={t(member.name)}
               initial={{ opacity: 0, y: 28 }}
               animate={teamInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -669,20 +671,20 @@ export default function SMLandingPage() {
                       color: member.stripe === 'gold' ? '#091524' : '#fff',
                     }}
                   >
-                    {member.initials}
+                    {t(member.initials)}
                   </div>
                   <div>
                     <p className="font-bold text-white text-base leading-tight">{member.name}</p>
-                    <p className="text-xs mt-0.5" style={{ color: member.stripe === 'gold' ? '#e5a83e' : 'rgba(255,255,255,0.55)' }}>{member.role}</p>
+                    <p className="text-xs mt-0.5" style={{ color: member.stripe === 'gold' ? '#e5a83e' : 'rgba(255,255,255,0.55)' }}>{t(member.role)}</p>
                   </div>
                 </div>
                 {/* Body */}
                 <div className="p-5 space-y-4">
-                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.58)', lineHeight: 1.65 }}>{member.bio}</p>
+                  <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.58)', lineHeight: 1.65 }}>{t(member.bio)}</p>
                   <div className="flex flex-wrap gap-1.5">
                     {member.tags.map(tag => (
                       <span
-                        key={tag}
+                        key={t(tag)}
                         className="text-xs font-semibold px-2.5 py-1 rounded-full"
                         style={{ background: 'rgba(200,144,46,0.15)', color: '#e5a83e', border: '1px solid rgba(200,144,46,0.25)' }}
                       >
@@ -734,39 +736,39 @@ export default function SMLandingPage() {
       ══════════════════════════════════════ */}
       <section style={{ background: '#091524', padding: '5rem 8%' }}>
         <AnimatedSection direction="up">
-          <SectionLabel>מה אומרים עלינו</SectionLabel>
+          <SectionLabel>{t('מה אומרים עלינו')}</SectionLabel>
           <h2 className="font-heading font-extrabold text-white" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-            בעלי נכסים מדברים.
+            {t('בעלי נכסים מדברים.')}
           </h2>
           <GoldDivider />
         </AnimatedSection>
 
         <div ref={testimonialsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {testimonials.map((t, i) => (
+          {testimonials.map((tm, i) => (
             <motion.div
-              key={t.name}
+              key={tm.name}
               initial={{ opacity: 0, y: 28 }}
               animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="glass-card p-6 h-full flex flex-col" style={glassCard}>
                 <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: t.rating }).map((_, s) => (
+                  {Array.from({ length: tm.rating }).map((_, s) => (
                     <Star key={s} size={13} style={{ color: '#C8902E', fill: '#C8902E' }} />
                   ))}
                 </div>
                 <Quote size={18} style={{ color: 'rgba(200,144,46,0.35)', marginBottom: 8 }} />
-                <p className="flex-1 mb-5" style={{ fontSize: '.88rem', color: 'rgba(255,255,255,0.70)', lineHeight: 1.65 }}>{t.quote}</p>
+                <p className="flex-1 mb-5" style={{ fontSize: '.88rem', color: 'rgba(255,255,255,0.70)', lineHeight: 1.65 }}>{t(tm.quote)}</p>
                 <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                   <div
                     className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
                     style={{ background: 'linear-gradient(135deg, #C8902E, #e5a83e)', color: '#091524' }}
                   >
-                    {t.initials}
+                    {t(tm.initials)}
                   </div>
                   <div>
-                    <p className="text-white font-semibold text-sm">{t.name}</p>
-                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.40)' }}>{t.role}</p>
+                    <p className="text-white font-semibold text-sm">{t(tm.name)}</p>
+                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.40)' }}>{t(tm.role)}</p>
                   </div>
                 </div>
               </div>
@@ -783,7 +785,7 @@ export default function SMLandingPage() {
               ))}
             </div>
             <span className="text-white font-bold text-lg">4.9</span>
-            <span className="text-sm" style={{ color: 'rgba(255,255,255,0.40)' }}>ממוצע דירוג לקוחות</span>
+            <span className="text-sm" style={{ color: 'rgba(255,255,255,0.40)' }}>{t('ממוצע דירוג לקוחות')}</span>
           </div>
         </AnimatedSection>
       </section>
@@ -796,22 +798,22 @@ export default function SMLandingPage() {
 
           {/* Info */}
           <AnimatedSection direction="up">
-            <SectionLabel>צרו קשר</SectionLabel>
+            <SectionLabel>{t('צרו קשר')}</SectionLabel>
             <h2 className="font-heading font-extrabold text-white mb-5" style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', lineHeight: 1.28 }}>
-              מבינים נדל״ן.{' '}
-              <span style={goldText}>אוהבים אנשים.</span>
+              {t('מבינים נדל״ן.')}{' '}
+              <span style={goldText}>{t('אוהבים אנשים.')}</span>
             </h2>
             <p className="mb-10 text-lg leading-relaxed" style={{ color: 'rgba(255,255,255,0.60)' }}>
-              נשמח להכיר, לשמוע על הנכס שלכם ולהסביר איך אנחנו עובדים. פנו אלינו ואנחנו נחזור אליכם תוך יום עסקים.
+              {t('נשמח להכיר, לשמוע על הנכס שלכם ולהסביר איך אנחנו עובדים. פנו אלינו ואנחנו נחזור אליכם תוך יום עסקים.')}
             </p>
 
             <ul className="space-y-5 mb-10">
               {[
-                { icon: Phone, label: 'משרד', value: '055-260-1077', href: 'tel:+972552601077', wa: 'https://wa.me/972552601077' },
-                { icon: Phone, label: 'שלומי לימור', value: '055-952-2746', href: 'tel:+972559522746', wa: 'https://wa.me/972559522746' },
-                { icon: Phone, label: 'מוטי גינדי', value: '052-577-6892', href: 'tel:+972525776892', wa: 'https://wa.me/972525776892' },
-                { icon: Mail, label: 'אימייל', value: 'info@prop360.co.il', href: 'mailto:info@prop360.co.il', wa: null },
-                { icon: MapPin, label: 'כתובת', value: 'תל אביב, ישראל', href: null, wa: null },
+                { icon: Phone, label: t('משרד'), value: '055-260-1077', href: 'tel:+972552601077', wa: 'https://wa.me/972552601077' },
+                { icon: Phone, label: t('שלומי לימור'), value: '055-952-2746', href: 'tel:+972559522746', wa: 'https://wa.me/972559522746' },
+                { icon: Phone, label: t('מוטי גינדי'), value: '052-577-6892', href: 'tel:+972525776892', wa: 'https://wa.me/972525776892' },
+                { icon: Mail, label: t('אימייל'), value: 'info@prop360.co.il', href: 'mailto:info@prop360.co.il', wa: null },
+                { icon: MapPin, label: t('כתובת'), value: t('תל אביב, ישראל'), href: null, wa: null },
               ].map(item => {
                 const Icon = item.icon;
                 return (
@@ -837,7 +839,7 @@ export default function SMLandingPage() {
                             href={item.wa}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`שליחת הודעת WhatsApp ל${item.label}`}
+                            aria-label={`WhatsApp: ${item.label}`}
                             className="inline-flex items-center justify-center min-h-11 min-w-11 -my-3 transition-transform hover:scale-110"
                           >
                             <WhatsAppIcon size={22} />
@@ -851,7 +853,7 @@ export default function SMLandingPage() {
             </ul>
 
             <ul className="space-y-3">
-              {['קשר ישיר עם בעלי החברה', 'תגובה תוך יום עסקים אחד', 'ייעוץ ראשוני ללא עלות'].map(item => (
+              {[t('קשר ישיר עם בעלי החברה'), t('תגובה תוך יום עסקים אחד'), t('ייעוץ ראשוני ללא עלות')].map(item => (
                 <li key={item} className="flex items-center gap-3" style={{ color: 'rgba(255,255,255,0.65)' }}>
                   <CheckCircle size={15} style={{ color: '#C8902E', flexShrink: 0 }} />
                   {item}
@@ -870,7 +872,7 @@ export default function SMLandingPage() {
                 boxShadow: '0 24px 80px rgba(0,0,0,0.3)',
               }}
             >
-              <h3 className="font-bold text-white text-xl mb-6">שלחו לנו פנייה</h3>
+              <h3 className="font-bold text-white text-xl mb-6">{t('שלחו לנו פנייה')}</h3>
               <LeadForm leadType="owner" />
             </div>
           </AnimatedSection>

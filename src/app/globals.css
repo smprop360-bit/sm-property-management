@@ -233,3 +233,8 @@ body {
     scroll-behavior: smooth;
   }
 }
+
+/* Arrows point in reading direction. */
+[dir="ltr"] .lucide-arrow-left {
+  transform: scaleX(-1);
+}

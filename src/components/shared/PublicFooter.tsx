@@ -1,4 +1,7 @@
-import Link from 'next/link';
+'use client';
+
+import Link from '@/i18n/Link';
+import { useT } from '@/i18n/client';
 import Image from 'next/image';
 
 const serviceLinks = [
@@ -18,6 +21,7 @@ const companyLinks = [
 ];
 
 export default function PublicFooter() {
+  const t = useT();
   return (
     <footer style={{ background: '#070F1C', borderTop: '1px solid rgba(200,144,46,0.18)' }} className="text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -43,20 +47,20 @@ export default function PublicFooter() {
               </div>
             </Link>
             <p className="text-sm text-white/40 leading-relaxed">
-              ניהול נכסים • השכרה • השקעות
+              {t('ניהול נכסים • השכרה • השקעות')}
             </p>
             <p className="mt-1 text-xs text-white/30">
-              מנהלים את הנכס. ממקסמים את ההשקעה.
+              {t('מנהלים את הנכס. ממקסמים את ההשקעה.')}
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">שירותים</h3>
+            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">{t('שירותים')}</h3>
             <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-white/40 hover:text-[#C8902E] transition-colors">
-                    {link.label}
+                    {t(link.label)}
                   </Link>
                 </li>
               ))}
@@ -64,12 +68,12 @@ export default function PublicFooter() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">החברה</h3>
+            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">{t('החברה')}</h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className="text-sm text-white/40 hover:text-[#C8902E] transition-colors">
-                    {link.label}
+                    {t(link.label)}
                   </Link>
                 </li>
               ))}
@@ -77,7 +81,7 @@ export default function PublicFooter() {
           </div>
 
           <div>
-            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">צור קשר</h3>
+            <h3 className="text-sm font-bold text-white/60 mb-4 tracking-wide">{t('צור קשר')}</h3>
             <ul className="space-y-3 text-sm text-white/40">
               <li>
                 <a href="tel:+972552601077" className="hover:text-[#C8902E] transition-colors">
@@ -96,14 +100,14 @@ export default function PublicFooter() {
         <div className="mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4"
           style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
           <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} S&amp;M Property Management. כל הזכויות שמורות.
+            © {new Date().getFullYear()} {t('S&M Property Management. כל הזכויות שמורות.')}
           </p>
           <div className="flex gap-6">
             <Link href="/accessibility" className="text-xs text-white/25 hover:text-white/50 transition-colors">
-              הצהרת נגישות
+              {t('הצהרת נגישות')}
             </Link>
             <Link href="/privacy" className="text-xs text-white/25 hover:text-white/50 transition-colors">
-              מדיניות פרטיות
+              {t('מדיניות פרטיות')}
             </Link>
           </div>
         </div>

@@ -1,4 +1,5 @@
 ﻿import type { Property360Data } from '@/app/actions/property360';
+import { useT } from '@/i18n/client';
 
 type Props = {
   data: Property360Data;
@@ -17,6 +18,7 @@ const interests = [
 ];
 
 export default function Step6Interest({ data, update, next, back }: Props) {
+  const t = useT();
   const toggle = (value: string) => {
     const updated = data.interests.includes(value)
       ? data.interests.filter((v) => v !== value)
@@ -26,8 +28,8 @@ export default function Step6Interest({ data, update, next, back }: Props) {
 
   return (
     <div>
-      <h2 className="font-heading text-2xl font-bold text-navy mb-2">מה מעניין אותך?</h2>
-      <p className="text-brand-muted mb-8">ניתן לבחור יותר מאפשרות אחת</p>
+      <h2 className="font-heading text-2xl font-bold text-navy mb-2">{t('מה מעניין אותך?')}</h2>
+      <p className="text-brand-muted mb-8">{t('ניתן לבחור יותר מאפשרות אחת')}</p>
       <div className="flex flex-col gap-3 mb-8">
         {interests.map((i) => (
           <button
@@ -35,24 +37,24 @@ export default function Step6Interest({ data, update, next, back }: Props) {
             onClick={() => toggle(i.value)}
             type="button"
             aria-pressed={data.interests.includes(i.value)}
-            className={`min-h-14 border-2 py-4 px-5 text-right font-medium transition-all ${
+            className={`min-h-14 border-2 py-4 px-5 text-start font-medium transition-all ${
               data.interests.includes(i.value)
                 ? 'border-gold bg-gold/5 text-navy'
                 : 'border-gray-200 text-brand-muted hover:border-gold/50'
             }`}
           >
-            {i.label}
+            {t(i.label)}
           </button>
         ))}
       </div>
       <div className="flex gap-4">
-        <button onClick={back} className="flex-1 border border-gray-200 text-brand-muted py-4 rounded-xl hover:border-navy transition-colors">חזרה</button>
+        <button onClick={back} className="flex-1 border border-gray-200 text-brand-muted py-4 rounded-xl hover:border-navy transition-colors">{t('חזרה')}</button>
         <button
           onClick={next}
           disabled={data.interests.length === 0}
           className="flex-1 bg-navy disabled:opacity-40 hover:bg-navy-dark text-white font-semibold py-4 rounded-xl transition-colors"
         >
-          המשך
+          {t('המשך')}
         </button>
       </div>
     </div>

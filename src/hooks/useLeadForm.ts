@@ -4,6 +4,8 @@ import { useState, ChangeEvent, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import type { LeadType } from '@/lib/types/lead'
+import { useLang, useT } from '@/i18n/client'
+import { localePath } from '@/i18n/config'
 
 interface FormValues {
   full_name: string
@@ -26,6 +28,8 @@ interface UseLeadFormOptions {
 
 export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
   const router = useRouter()
+  const t = useT()
+  const lang = useLang()
   const [values, setValues] = useState<FormValues>({
     full_name: '',
     phone: '',
@@ -48,11 +52,11 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
 
   function validate(): boolean {
     const newErrors: FormErrors = {}
-    if (!values.full_name.trim()) newErrors.full_name = 'שם מלא הוא שדה חובה'
+    if (!values.full_name.trim()) newErrors.full_name = t('שם מלא הוא שדה חובה')
     if (!values.phone.trim()) {
-      newErrors.phone = 'טלפון הוא שדה חובה'
-    } else if (!/^0[2-9]\d{7,8}$/.test(values.phone.replace(/[-\s]/g, ''))) {
-      newErrors.phone = 'מספר טלפון לא תקין'
+      newErrors.phone = t('טלפון הוא שדה חובה')
+    } else if (!/^(0[2-9]\d{7,8}|\+[1-9]\d{7,14})$/.test(values.phone.replace(/[-\s]/g, ''))) {
+      newErrors.phone = t('מספר טלפון לא תקין')
     }
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
@@ -87,9 +91,9 @@ export function useLeadForm({ leadType, propertyId }: UseLeadFormOptions) {
 
     setLoading(false)
     if (error) {
-      setSubmitError('שגיאה בשליחת הטופס. אנא נסה שוב.')
+      setSubmitError(t('שגיאה בשליחת הטופס. אנא נסה שוב.'))
     } else {
-      router.push('/thank-you')
+      router.push(localePath(lang, '/thank-you'))
     }
   }
 

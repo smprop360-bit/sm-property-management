@@ -463,7 +463,9 @@ export function getArticlesByCategory(categorySlug: string): Article[] {
   return articles.filter((a) => a.categorySlug === categorySlug);
 }
 
-export function formatDate(dateStr: string): string {
+const dateLocales: Record<string, string> = { he: 'he-IL', en: 'en-GB', ru: 'ru-RU', fr: 'fr-FR' };
+
+export function formatDate(dateStr: string, lang = 'he'): string {
   const d = new Date(dateStr);
-  return d.toLocaleDateString('he-IL', { year: 'numeric', month: 'long', day: 'numeric' });
+  return d.toLocaleDateString(dateLocales[lang], { year: 'numeric', month: 'long', day: 'numeric' });
 }

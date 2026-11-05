@@ -1,12 +1,15 @@
 'use client';
 
+import { useT } from '@/i18n/client';
+
 export default function WhatsAppButton() {
+  const t = useT();
   return (
     <a
       href="https://wa.me/972552601077"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="שלחו הודעה ב-WhatsApp"
+      aria-label={t('שלחו הודעה ב-WhatsApp')}
       style={{
         position: 'fixed',
         bottom: '28px',

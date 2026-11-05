@@ -1,11 +1,14 @@
 'use client';
 
-import Link from 'next/link';
+import Link from '@/i18n/Link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useT } from '@/i18n/client';
+import { stripLocale } from '@/i18n/config';
+import LanguageSwitcher from '@/i18n/LanguageSwitcher';
 
 const navLinks = [
   { href: '/', label: 'ראשי' },
@@ -34,7 +37,8 @@ export function WhatsAppIcon({ size = 16 }: { size?: number }) {
 export default function PublicHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const pathname = usePathname();
+  const pathname = stripLocale(usePathname());
+  const t = useT();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,21 +59,24 @@ export default function PublicHeader() {
       }}
     >
       <div style={{ borderBottom: '1px solid rgba(200,144,46,0.12)' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center sm:justify-end gap-4 sm:gap-6 h-9 text-xs sm:text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-center sm:justify-between gap-x-5 gap-y-1 py-1.5 min-h-9 text-xs sm:text-sm">
+          <LanguageSwitcher />
+          <div className="flex items-center gap-4 sm:gap-6">
           {contacts.map((c) => (
             <a
               key={c.wa}
               href={`https://wa.me/${c.wa}`}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`שליחת הודעת WhatsApp ל${c.name} ${c.display}`}
+              aria-label={`WhatsApp: ${t(c.name)} ${c.display}`}
               className="flex items-center gap-1.5 text-white/70 hover:text-white transition-colors"
             >
               <WhatsAppIcon />
-              <span>{c.name}</span>
+              <span>{t(c.name)}</span>
               <span dir="ltr" className="font-medium text-white">{c.display}</span>
             </a>
           ))}
+          </div>
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -108,7 +115,7 @@ export default function PublicHeader() {
                     : 'text-white/60 hover:text-white border-transparent'
                 }`}
               >
-                {link.label}
+                {t(link.label)}
               </Link>
             ))}
           </nav>
@@ -118,14 +125,14 @@ export default function PublicHeader() {
               href="/admin"
               className="text-sm text-white/40 hover:text-white/70 transition-colors"
             >
-              כניסת בעלי נכסים
+              {t('כניסת בעלי נכסים')}
             </Link>
           </div>
 
           <button
             className="lg:hidden min-h-11 min-w-11 p-2 text-white/70"
             onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'סגור תפריט' : 'פתח תפריט'}
+            aria-label={mobileOpen ? t('סגור תפריט') : t('פתח תפריט')}
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -152,7 +159,7 @@ export default function PublicHeader() {
               }`}
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              {t(link.label)}
             </Link>
           ))}
         </motion.div>

@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
+import { localePath } from '@/i18n/config';
 
 export type Property360Data = {
   property_type: string;
@@ -25,7 +26,7 @@ export type Property360Data = {
   utm_content?: string;
 };
 
-export async function submitProperty360(data: Property360Data) {
+export async function submitProperty360(data: Property360Data, lang = 'he') {
   const fullName = data.full_name.trim();
   const phone = data.phone.replace(/[\s-]/g, '');
   const email = data.email.trim();
@@ -34,7 +35,7 @@ export async function submitProperty360(data: Property360Data) {
     throw new Error('יש להזין שם מלא.');
   }
 
-  if (!/^0[2-9]\d{7,8}$/.test(phone)) {
+  if (!/^(0[2-9]\d{7,8}|\+[1-9]\d{7,14})$/.test(phone)) {
     throw new Error('יש להזין מספר טלפון תקין.');
   }
 
@@ -80,5 +81,5 @@ export async function submitProperty360(data: Property360Data) {
     throw new Error('שגיאה בשמירת הפרטים. נסו שוב.');
   }
 
-  redirect('/thank-you');
+  redirect(localePath(lang, '/thank-you'));
 }
