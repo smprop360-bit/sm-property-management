@@ -25,9 +25,9 @@ const contactMethods = [
   {
     icon: Mail,
     label: 'אימייל',
-    value: 'info@sm-property.co.il',
+    value: 'info@prop360.co.il',
     sub: 'תגובה תוך יום עסקים',
-    href: 'mailto:info@sm-property.co.il',
+    href: 'mailto:info@prop360.co.il',
   },
   {
     icon: MapPin,

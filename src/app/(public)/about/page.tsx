@@ -185,6 +185,13 @@ export default function AboutPage() {
                       </a>
                     </div>
                     <p className="text-[#C8902E] font-semibold text-sm tracking-wide mt-1">שותף מייסד</p>
+                    <a
+                      href="mailto:shlomy@prop360.co.il"
+                      dir="ltr"
+                      className="inline-block text-sm text-white/70 hover:text-[#C8902E] transition-colors mt-1"
+                    >
+                      shlomy@prop360.co.il
+                    </a>
                   </div>
                 </div>
                 <div className="space-y-4 text-white/60 leading-relaxed">
@@ -223,8 +230,24 @@ export default function AboutPage() {
                     מ
                   </div>
                   <div>
-                    <h3 className="font-bold text-white text-2xl">מוטי גינדי</h3>
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <h3 className="font-bold text-white text-2xl">מוטי גינדי</h3>
+                      <a
+                        href="tel:+972525776892"
+                        dir="ltr"
+                        className="text-sm font-medium text-white/70 hover:text-[#C8902E] transition-colors"
+                      >
+                        052-577-6892
+                      </a>
+                    </div>
                     <p className="text-[#C8902E] font-semibold text-sm tracking-wide mt-1">שותף מייסד</p>
+                    <a
+                      href="mailto:moty@prop360.co.il"
+                      dir="ltr"
+                      className="inline-block text-sm text-white/70 hover:text-[#C8902E] transition-colors mt-1"
+                    >
+                      moty@prop360.co.il
+                    </a>
                   </div>
                 </div>
                 <div className="space-y-4 text-white/60 leading-relaxed">
