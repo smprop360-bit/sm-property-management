@@ -821,7 +821,7 @@ export default function SMLandingPage() {
                       <Icon size={18} style={{ color: '#C8902E' }} />
                     </div>
                     <div>
-                      <p className="text-xs mb-0.5" style={{ color: 'rgba(255,255,255,0.40)' }}>{item.label}</p>
+                      <p className="text-base font-semibold mb-0.5" style={{ color: 'rgba(255,255,255,0.75)' }}>{item.label}</p>
                       <div className="flex items-center gap-3">
                         {item.href ? (
                           <a href={item.href} className="font-semibold text-white hover:text-gold transition-colors">{item.value}</a>
