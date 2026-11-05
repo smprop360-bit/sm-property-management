@@ -434,14 +434,14 @@ export default function SMLandingPage() {
         <div ref={whyRef} className="grid gap-5 mt-2" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' }}>
           {whyItems.map((item, i) => (
             <motion.div
-              key={t(item.title)}
+              key={item.title}
               initial={{ opacity: 0, y: 28 }}
               animate={whyInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.09, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="glass-card text-center p-8 h-full" style={glassCard}>
                 <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="font-bold text-white mb-2" style={{ fontSize: '1.05rem' }}>{item.title}</h3>
+                <h3 className="font-bold text-white mb-2" style={{ fontSize: '1.05rem' }}>{t(item.title)}</h3>
                 <p style={{ fontSize: '.87rem', color: 'rgba(255,255,255,0.60)', lineHeight: 1.6 }}>{t(item.body)}</p>
               </div>
             </motion.div>

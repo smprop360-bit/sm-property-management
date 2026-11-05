@@ -312,8 +312,8 @@ export default async function AboutPage({ params }: LangProps) {
 
             <div className="grid grid-cols-2 gap-4">
               {values.map((v) => (
-                <div key={t(v.title)} style={{ ...glassCard, padding: '24px' }}>
-                  <h3 className="font-bold text-white mb-2">{v.title}</h3>
+                <div key={v.title} style={{ ...glassCard, padding: '24px' }}>
+                  <h3 className="font-bold text-white mb-2">{t(v.title)}</h3>
                   <p className="text-white/55 text-sm leading-relaxed">{t(v.body)}</p>
                 </div>
               ))}
