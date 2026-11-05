@@ -643,7 +643,7 @@ export default function SMLandingPage() {
         <div ref={teamRef} className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl">
           {team.map((member, i) => (
             <motion.div
-              key={t(member.name)}
+              key={member.name}
               initial={{ opacity: 0, y: 28 }}
               animate={teamInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -674,7 +674,7 @@ export default function SMLandingPage() {
                     {t(member.initials)}
                   </div>
                   <div>
-                    <p className="font-bold text-white text-base leading-tight">{member.name}</p>
+                    <p className="font-bold text-white text-base leading-tight">{t(member.name)}</p>
                     <p className="text-xs mt-0.5" style={{ color: member.stripe === 'gold' ? '#e5a83e' : 'rgba(255,255,255,0.55)' }}>{t(member.role)}</p>
                   </div>
                 </div>
@@ -684,11 +684,11 @@ export default function SMLandingPage() {
                   <div className="flex flex-wrap gap-1.5">
                     {member.tags.map(tag => (
                       <span
-                        key={t(tag)}
+                        key={tag}
                         className="text-xs font-semibold px-2.5 py-1 rounded-full"
                         style={{ background: 'rgba(200,144,46,0.15)', color: '#e5a83e', border: '1px solid rgba(200,144,46,0.25)' }}
                       >
-                        {tag}
+                        {t(tag)}
                       </span>
                     ))}
                   </div>
