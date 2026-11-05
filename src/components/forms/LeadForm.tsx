@@ -85,7 +85,7 @@ export function LeadForm({ leadType, propertyId, className }: LeadFormProps) {
               name="property_type"
               value={values.property_type}
               onChange={handleChange as React.ChangeEventHandler<HTMLSelectElement>}
-              className="w-full border border-input bg-background px-3 py-2 text-sm rounded-md h-10 focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full border border-input bg-transparent px-3 py-1 text-sm rounded-md h-8 focus:outline-none focus:ring-2 focus:ring-ring [&>option]:bg-white [&>option]:text-gray-900"
             >
               <option value="">בחרו סוג</option>
               <option value="דירה">דירה</option>
