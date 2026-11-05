@@ -136,7 +136,7 @@ export default function ContactPage() {
                         <Icon size={18} className="text-[#C8902E]" />
                       </div>
                       <div>
-                        <p className="text-base font-semibold text-white/75 mb-0.5">{method.label}</p>
+                        <p className="text-xs font-bold text-white/40 tracking-wide mb-0.5">{method.label}</p>
                         <p className="font-semibold text-white text-sm">{method.value}</p>
                         <p className="text-xs text-white/45 mt-0.5">{method.sub}</p>
                       </div>
